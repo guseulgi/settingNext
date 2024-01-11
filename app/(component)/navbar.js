@@ -7,20 +7,20 @@ const menu = [
     alt: "메인으로",
   },
   {
-    name: "Find",
-    href: "/find",
-    alt: "찾기",
+    name: "List",
+    href: "/list",
+    alt: "전체 리스트",
   },
   {
-    name: "Recommand",
-    href: "/rcmd",
-    alt: "추천하기",
+    name: "Get cha!",
+    href: "/getcha",
+    alt: "오늘의 포켓몬",
   },
 ];
 
 export default function Navbar() {
   return (
-    <div className="h-14 bg-slate-950 rounded-md">
+    <div className="h-14 bg-slate-950 rounded-md mb-7">
       <ul className="flex h-full">
         {menu.map((item, idx) => {
           return (
