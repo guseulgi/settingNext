@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="flex text-xs text-gray-400 justify-center py-8">
         {소개.map((소갯말, 인덱스) => {
           return (
-            <Link key={소갯말.toString()} className="flex" href={소갯말.주소}>
+            <Link key={소갯말.타이틀} className="flex" href={소갯말.주소}>
               <p>{소갯말.타이틀}</p>
               {소개.length - 1 !== 인덱스 ? (
                 <p className="w-[1px] h-3 my-auto mx-3 bg-gray-300"></p>
@@ -30,7 +30,12 @@ export default function Footer() {
         <p className="text-xs text-gray-400">
           Copyright© 구슬기. All rights reserved.
         </p>
-        <Image src="/logo_2.png" width={120} height={50} />
+        <Image
+          src="/logo_2.png"
+          width={120}
+          height={50}
+          alt="아카데미 과학 로고"
+        />
       </div>
     </div>
   );

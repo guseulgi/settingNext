@@ -9,7 +9,7 @@ export default function Getcha() {
     const data = await res.json();
     return data;
   }
-  fetchData();
+  // fetchData();
 
   return (
     <div>

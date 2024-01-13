@@ -15,11 +15,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={inter.className}>
-        <Logobar />
-        <Navbar />
-        {children}
+        <div id="outterContainer">
+          <Logobar />
+          <Navbar />
+          {children}
+        </div>
+        <Footer />
       </body>
-      <Footer />
     </html>
   );
 }

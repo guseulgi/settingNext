@@ -18,6 +18,7 @@ export default function Main() {
         width={600}
         height={400}
         className="m-auto"
+        alt="몬콜레 예시 이미지"
       />
       <p className="text-xs font-light text-gray-500 mx-24 my-2">
         {">>"} 모든 포켓몬이 대부분 약 4cm로만 통일되어서 나온다. 그래서
