@@ -20,7 +20,7 @@ const menu = [
 
 export default function Navbar() {
   return (
-    <div className="h-14 bg-slate-950 rounded-md mb-7">
+    <nav className="h-14 bg-slate-950 dark:bg-white rounded-md mb-7">
       <ul className="flex h-full">
         {menu.map((item, idx) => {
           return (
@@ -32,6 +32,6 @@ export default function Navbar() {
           );
         })}
       </ul>
-    </div>
+    </nav>
   );
 }
