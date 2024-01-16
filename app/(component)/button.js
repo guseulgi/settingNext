@@ -10,6 +10,7 @@ export default function Button({ title, path, size, imgStyle }) {
         height={size.h}
         className={imgStyle}
         alt={title}
+        style={{ height: size.h + "px" }}
       />
     </div>
   );
