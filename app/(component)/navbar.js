@@ -16,6 +16,21 @@ const menu = [
     href: "/getcha",
     alt: "오늘의 포켓몬",
   },
+  {
+    name: "",
+    href: "",
+    alt: "",
+  },
+  {
+    name: "",
+    href: "",
+    alt: "",
+  },
+  {
+    name: "Notice",
+    href: "/notice",
+    alt: "공지사항",
+  },
 ];
 
 export default function Navbar() {
@@ -23,13 +38,15 @@ export default function Navbar() {
     <nav className="h-14 bg-slate-950 dark:bg-white rounded-md mb-7">
       <ul className="flex h-full">
         {menu.map((item, idx) => {
-          return (
-            <Link href={item.href} key={idx}>
-              <li className="font-bold text-slate-600 text-center mx-10 leading-[3.5rem] hover:text-white h-full">
-                {item.name}
-              </li>
-            </Link>
-          );
+          if (item.href !== "")
+            return (
+              <Link href={item.href} key={idx}>
+                <li className="font-bold text-slate-600 text-center mx-10 leading-[3.5rem] hover:text-white h-full">
+                  {item.name}
+                </li>
+              </Link>
+            );
+          else return <div key={idx} className="w-[15%]"></div>;
         })}
       </ul>
     </nav>
