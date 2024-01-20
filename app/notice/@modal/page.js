@@ -1,5 +1,5 @@
 import Modal from "@/app/_component/modal";
 
 export default function NoticePage() {
-  return <Modal />;
+  return <Modal content="I'm preparing this section" noA="Close" />;
 }
