@@ -22,16 +22,16 @@ export default function Modal({ content, noA }) {
           <div class="p-4 md:p-5 text-center">
             <svg
               class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
-              aria-hidden="true"
+              ariaHidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 20 20"
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
               />
             </svg>
@@ -40,7 +40,7 @@ export default function Modal({ content, noA }) {
             </h3>
 
             <button
-              data-modal-hide="popup-modal"
+              dataModalHide="popup-modal"
               onClick={CloseModal}
               type="button"
               className=" text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
