@@ -3,6 +3,8 @@ import Carousel from "../_component/Carousel";
 export default function AllList() {
   return (
     <>
+      <span className="font-bold text-slate-950">NEW 몬콜레</span>
+      <hr />
       <Carousel />
       <span className="font-bold text-slate-950">몬콜레 MS 시리즈</span>
       <hr />

@@ -1,71 +1,97 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Carousel() {
+  const [curNum, setCurNum] = useState("0");
+
+  const clickIndicator = (e) => {
+    console.log(e.target.dataset.datacarouselslideto);
+    setCurNum(e.target.dataset.datacarouselslideto);
+  };
+
   return (
     <div
       id="indicators-carousel"
-      className="relative w-full  mb-20"
-      dataCarousel="slide"
+      className="relative w-full mb-10"
+      datacarousel="slide"
     >
-      <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
+      <div className="relative h-20 overflow-hidden rounded-lg md:h-96">
         <div className=" duration-700 ease-in-out" data-carousel-item="active">
-          <Image
-            src="/slide1.png"
-            width={400}
-            height={400}
-            className="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="..."
-          />
+          {curNum === "0" && (
+            <Image
+              src="/slide3.jpeg"
+              width={300}
+              height={300}
+              className="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              alt="..."
+            />
+          )}
+          {curNum === "1" && (
+            <Image
+              src="/slide2.png"
+              width={300}
+              height={300}
+              className="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              alt="..."
+            />
+          )}
+          {curNum === "2" && (
+            <Image
+              src="/slide1.png"
+              width={300}
+              height={300}
+              className="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              alt="..."
+            />
+          )}
         </div>
       </div>
 
       <div className="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
         <button
           type="button"
-          className="w-3 h-3 rounded-full"
-          ariaCurrent="true"
-          ariaLabel="Slide 1"
-          dataCarouselSlideTo="0"
+          className="w-3 h-3 rounded-full bg-slate-950"
+          aria-current="true"
+          aria-label="Slide 1"
+          datacarouselslideto="0"
+          onClick={clickIndicator}
         ></button>
         <button
           type="button"
-          className="w-3 h-3 rounded-full"
-          ariaCurrent="false"
-          ariaLabel="Slide 2"
-          dataCarouselSlideTo="1"
+          className="w-3 h-3 rounded-full bg-slate-950"
+          aria-current="false"
+          aria-label="Slide 2"
+          datacarouselslideto="1"
+          onClick={clickIndicator}
         ></button>
         <button
           type="button"
-          className="w-3 h-3 rounded-full"
-          ariaCurrent="false"
-          ariaLabel="Slide 3"
-          dataCarouselSlideTo="2"
-        ></button>
-        <button
-          type="button"
-          className="w-3 h-3 rounded-full"
-          ariaCurrent="false"
-          ariaLabel="Slide 4"
-          dataCarouselSlideTo="3"
-        ></button>
-        <button
-          type="button"
-          className="w-3 h-3 rounded-full"
-          ariaCurrent="false"
-          ariaLabel="Slide 5"
-          dataCarouselSlideTo="4"
+          className="w-3 h-3 rounded-full bg-slate-950"
+          aria-current="false"
+          aria-label="Slide 3"
+          datacarouselslideto="2"
+          onClick={clickIndicator}
         ></button>
       </div>
 
       <button
         type="button"
         className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        dataCarouselPrev
+        datacarouselprev
+        onClick={() => {
+          const tmp = parseInt(curNum) - 1;
+          if (tmp < 0) setCurNum("2");
+          else {
+            setCurNum(tmp.toString());
+          }
+        }}
       >
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-950/70 dark:bg-slate-950/30 group-hover:bg-slate-950/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-slate-950 dark:group-focus:ring-slate-800/70 group-focus:outline-none">
           <svg
             className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-            ariaHidden="true"
+            aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 6 10"
@@ -84,12 +110,19 @@ export default function Carousel() {
       <button
         type="button"
         className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        dataCarouselNext
+        datacarouselnext
+        onClick={() => {
+          const tmp = parseInt(curNum) + 1;
+          if (tmp > 2) setCurNum("0");
+          else {
+            setCurNum(tmp.toString());
+          }
+        }}
       >
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-950/70 dark:bg-slate-950/30 group-hover:bg-slate-950/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-slate-950 dark:group-focus:ring-slate-800/70 group-focus:outline-none">
           <svg
             className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-            ariaHidden="true"
+            aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 6 10"
