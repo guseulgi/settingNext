@@ -6,7 +6,7 @@ export default function NoticePage() {
           <div className="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
             <svg
               className="w-2.5 h-2.5 text-blue-800 dark:text-blue-300"
-              ariaHidden="true"
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 20 20"
@@ -33,7 +33,7 @@ export default function NoticePage() {
           <div className="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
             <svg
               className="w-2.5 h-2.5 text-blue-800 dark:text-blue-300"
-              ariaHidden="true"
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 20 20"
@@ -60,7 +60,7 @@ export default function NoticePage() {
           <div class="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
             <svg
               class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300"
-              ariaHidden="true"
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 20 20"

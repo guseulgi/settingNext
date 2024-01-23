@@ -7,8 +7,7 @@ export default function Carousel() {
   const [curNum, setCurNum] = useState("0");
 
   const clickIndicator = (e) => {
-    console.log(e.target.dataset.datacarouselslideto);
-    setCurNum(e.target.dataset.datacarouselslideto);
+    setCurNum(e.target.dataset.carouselslideto);
   };
 
   return (
@@ -55,7 +54,7 @@ export default function Carousel() {
           className="w-3 h-3 rounded-full bg-slate-950"
           aria-current="true"
           aria-label="Slide 1"
-          datacarouselslideto="0"
+          data-carouselslideto="0"
           onClick={clickIndicator}
         ></button>
         <button
@@ -63,7 +62,7 @@ export default function Carousel() {
           className="w-3 h-3 rounded-full bg-slate-950"
           aria-current="false"
           aria-label="Slide 2"
-          datacarouselslideto="1"
+          data-carouselslideto="1"
           onClick={clickIndicator}
         ></button>
         <button
@@ -71,7 +70,7 @@ export default function Carousel() {
           className="w-3 h-3 rounded-full bg-slate-950"
           aria-current="false"
           aria-label="Slide 3"
-          datacarouselslideto="2"
+          data-carouselslideto="2"
           onClick={clickIndicator}
         ></button>
       </div>

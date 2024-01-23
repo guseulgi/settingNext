@@ -1,4 +1,4 @@
-import Carousel from "../_component/Carousel";
+import Carousel from "../_component/carousel";
 
 export default function AllList() {
   return (

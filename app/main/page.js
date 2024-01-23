@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Main() {
   return (
-    <div className="">
+    <div>
       <span className="font-bold text-slate-950">몬콜레란?</span>
       <hr />
       <p className="mt-3">

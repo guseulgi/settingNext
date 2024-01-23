@@ -29,14 +29,14 @@ export default function Footer() {
         })}
       </div>
 
-      <div class="flex my-4 sm:justify-center sm:mt-0">
+      <div className="flex my-4 sm:justify-center sm:mt-0">
         <Link
           href="/"
           className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
         >
           <svg
-            class="w-4 h-4"
-            ariaHidden="true"
+            className="w-4 h-4"
+            aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             viewBox="0 0 8 19"
@@ -55,7 +55,7 @@ export default function Footer() {
         >
           <svg
             className="w-4 h-4"
-            ariaHidden="true"
+            aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             viewBox="0 0 21 16"
@@ -70,7 +70,7 @@ export default function Footer() {
         >
           <svg
             className="w-4 h-4"
-            ariaHidden="true"
+            aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             viewBox="0 0 20 17"
@@ -89,7 +89,7 @@ export default function Footer() {
         >
           <svg
             className="w-4 h-4"
-            ariaHidden="true"
+            aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             viewBox="0 0 20 20"
