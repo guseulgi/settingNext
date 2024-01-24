@@ -56,6 +56,7 @@ export default function Logobar() {
           path="/PokeBall.png"
           size={loginButtonSize}
           imgStyle={loginButtonStlye}
+          href="/login"
         />
       </div>
     </div>

@@ -18,7 +18,7 @@ export default function Modal({ content, noA }) {
     >
       <div className="relative p-4 w-full max-w-md max-h-full">
         <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-          <CloseButton onClick={CloseModal} />
+          <CloseButton sort="modal" onClick={CloseModal} />
           <div className="p-4 md:p-5 text-center">
             <svg
               className="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
