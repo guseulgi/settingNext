@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const menu = [
+export const menu = [
   {
     name: "Home",
     href: "/main",
@@ -30,7 +30,7 @@ const menu = [
 
 export default function Navbar() {
   return (
-    <nav className="h-14 bg-slate-950 dark:bg-white rounded-md mb-7">
+    <nav className="hidden md:block h-14 bg-slate-950 dark:bg-white rounded-md mb-7">
       <ul className="flex h-full">
         {menu.map((item, idx) => {
           if (item.href !== "") {
