@@ -3,43 +3,15 @@
 import Image from "next/image";
 import Button from "./button";
 import SearchBar from "./searchbar";
-import Link from "next/link";
 import { useState } from "react";
-
-const menu2 = [
-  {
-    name: "Home",
-    href: "/main",
-    alt: "메인으로",
-  },
-  {
-    name: "List",
-    href: "/list",
-    alt: "전체 리스트",
-  },
-  {
-    name: "Get cha!",
-    href: "/getcha",
-    alt: "오늘의 포켓몬",
-  },
-  {
-    name: "",
-    href: "",
-    alt: "",
-  },
-  {
-    name: "Notice",
-    href: "/notice",
-    alt: "공지사항",
-  },
-];
+import ModbileNavbar from "./mobileNavbar";
 
 const loginButtonStlye =
   "cursor-pointer hover:-translate-y-1 hover:scale-100 scale-90 duration-100 mr-2 mt-2";
 const loginButtonSize = { w: 28, h: 28 };
 
 export default function Logobar() {
-  const [block, setBlock] = useState(false);
+  const [isBlock, setIsBlock] = useState(false);
 
   return (
     <>
@@ -52,7 +24,7 @@ export default function Logobar() {
             aria-controls="navbar-hamburger"
             aria-expanded="false"
             onClick={() => {
-              setBlock(!block);
+              setIsBlock(!isBlock);
             }}
           >
             <span className="sr-only">Open main menu</span>
@@ -94,47 +66,7 @@ export default function Logobar() {
         </div>
       </div>
 
-      <div
-        className={`${
-          block ? "hidden" : "block"
-        } md:hidden w-full" id="navbar-hamburger`}
-      >
-        <ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-          <li>
-            <a
-              href="#"
-              class="block py-2 px-3 text-white bg-blue-700 rounded dark:bg-blue-600"
-              aria-current="page"
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              Services
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              Pricing
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
-      </div>
+      <ModbileNavbar block={isBlock} />
     </>
   );
 }
