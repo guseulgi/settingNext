@@ -16,7 +16,7 @@ export default function Carousel() {
       className="relative w-full mb-10"
       datacarousel="slide"
     >
-      <div className="relative h-20 overflow-hidden rounded-lg md:h-96">
+      <div className="relative h-80 overflow-hidden rounded-lg md:h-96">
         <div className=" duration-700 ease-in-out" data-carousel-item="active">
           {curNum === "0" && (
             <Image
