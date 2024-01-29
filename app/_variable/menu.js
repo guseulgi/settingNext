@@ -1,8 +1,13 @@
 export const menu = [
   {
-    name: "Home",
+    name: "Notice",
+    href: "/notice",
+    alt: "공지사항",
+  },
+  {
+    name: "Moncolle?",
     href: "/main",
-    alt: "메인으로",
+    alt: "몬콜레에 대한 설명",
   },
   {
     name: "List",
@@ -20,8 +25,8 @@ export const menu = [
     alt: "",
   },
   {
-    name: "Notice",
-    href: "/notice",
-    alt: "공지사항",
+    name: "MyPage",
+    href: "/mypage",
+    alt: "마이페이지",
   },
 ];
