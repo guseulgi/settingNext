@@ -2,16 +2,51 @@
 
 import { Label, TextInput, Checkbox, Button } from "flowbite-react";
 import Link from "next/link";
+import { useState } from "react";
 
+const errMsg = ["Only input english", "Do not blink this field"];
+
+// TODO 비밀번호 유효성
 export default function Signin() {
+  const [name, setName] = useState("");
+  const [pw, setPw] = useState("");
+  const [checkPw, setCheckPw] = useState("");
+  const [inputPw, setInputPw] = useState("");
+
+  const inputName = (e) => {
+    if (e.target.value === "") setName(errMsg[1]);
+    else setName("");
+  };
+
+  const cofirmPw = (e) => {
+    if (e.target.value !== "") setPw(e.target.value);
+
+    if (pw === checkPw) setInputPw("Password is collected");
+    else setInputPw("Password is not collected");
+  };
+
+  const cofirmCheckPw = (e) => {
+    if (e.target.value !== "") setCheckPw(e.target.value);
+
+    if (pw === checkPw) setInputPw("Password is collected");
+    else setInputPw("Password is not collected");
+  };
+
   return (
-    <div className="flex flex-col gap-6 my-5">
+    <form className="flex flex-col gap-6 my-5">
       <h2 className="mx-auto text-2xl mt-6 mb-3">Register, play with me!</h2>
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
         <div className="mb-2 block ">
           <Label htmlFor="username" value="Username" />
         </div>
-        <TextInput id="username" placeholder="pokemon" addon="@" required />
+        <TextInput
+          id="username"
+          placeholder="pokemon"
+          addon="@"
+          required
+          onChange={inputName}
+        />
+        <Label value={name} className="text-red-500" />
       </div>
 
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
@@ -33,6 +68,7 @@ export default function Signin() {
           type="email"
           placeholder="email@xxxxx.com"
           required
+          color="blue"
         />
       </div>
 
@@ -40,16 +76,32 @@ export default function Signin() {
         <div className="mb-2 block">
           <Label htmlFor="password" value="Password" />
         </div>
-        <TextInput id="password1" type="password" required shadow />
+        <TextInput
+          id="password1"
+          type="password"
+          required
+          shadow
+          color="blue"
+          onChange={cofirmPw}
+        />
       </div>
 
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
         <div className="mb-2 block">
           <Label htmlFor="repeat-password" value="Repeat password" />
         </div>
-        <TextInput id="repeat-password" type="password" required shadow />
+        <TextInput
+          id="repeat-password"
+          type="password"
+          required
+          shadow
+          color="blue"
+          onChange={cofirmCheckPw}
+        />
+        <Label value={inputPw} className="text-red-500" />
+
         <div className="flex items-center gap-2 mt-1">
-          <Checkbox id="agree" />
+          <Checkbox id="agree" color="blue" />
           <Label htmlFor="agree" className="flex">
             I agree with the&nbsp;
             <Link
@@ -67,6 +119,6 @@ export default function Signin() {
           Register new account
         </Button>
       </div>
-    </div>
+    </form>
   );
 }
