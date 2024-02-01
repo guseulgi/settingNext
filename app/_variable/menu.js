@@ -32,8 +32,8 @@ export const menu = [
 ];
 
 export const myPageMenu = [
+  { title: "좋아요", link: "/mypage/likelist" },
   { title: "개인정보수정", link: "/mypage/profile" },
   { title: "비밀번호 변경", link: "/mypage/changepw" },
-  { title: "장바구니", link: "/mypage/mycart" },
-  { title: "좋아요 목록", link: "/mypage/likelist" },
+  { title: "로그아웃", link: "/logout" },
 ];
