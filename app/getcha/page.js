@@ -1,37 +1,45 @@
 export default async function Getcha() {
   const data = await fetchData();
-  // console.log("data", data);
-  // console.log("data", data.props.data.results);
 
-  const pkname = data.props.data.results[0].name.toUpperCase();
-  const pknum = data.props.data.results[0].url.split("/")[6];
+  const enpkname = data.props.data.name.toUpperCase();
+  const pknum = data.props.data.id;
+  const koname = data.props.koname;
+  const type = data.props.type;
 
   return (
     <div>
       <span className="font-bold text-slate-950">오늘의 포켓몬!</span>
       <hr />
       <p className="mt-10 font-bold text-2xl">
-        {pkname} ({pknum}/{data.props.data.count})
+        {koname} ({enpkname}){" "}
+        <span className="font-normal text-sm">({pknum})</span>
       </p>
+      <hr />
+      <p>{type}</p>
     </div>
   );
 }
 
 async function fetchData() {
-  const baseApi = "https://pokeapi.co/api/v2/pokemon";
+  const baseApi = "https://pokeapi.co/api/v2/";
   let randNum = Math.round(parseInt(Math.random() * 1400));
-  const offsetApi = `${baseApi}?offset=${randNum}&limit=1`;
 
-  // ISR
-  const res = await fetch(offsetApi, { next: { revalidate: 60 * 60 * 24 } });
+  const detailApi = `${baseApi}/pokemon-species/${randNum}`;
+  const res = await fetch(detailApi, { next: { revalidate: 60 * 60 * 24 } });
+  const details = await res.json();
 
-  // SSR
-  // const res = await fetch(offsetApi, { cache: "no-store" });
-  const data = await res.json();
+  const kopkname = details.names.map((item) => {
+    if (item.language.name === "ko") return item.name;
+  });
+  const genera = details.genera.map((item) => {
+    if (item.language.name === "ko") return item.genus;
+  });
 
   return {
     props: {
-      data: data,
+      data: details,
+      koname: kopkname,
+      type: genera,
     },
   };
 }
