@@ -1,9 +1,9 @@
-import LikeList from "./_component/likelist";
+import DefaultPage from "./_component/defaultpage";
 
 export default function MyPage() {
   return (
     <>
-      <LikeList />
+      <DefaultPage />
     </>
   );
 }

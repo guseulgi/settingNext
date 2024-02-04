@@ -5,7 +5,8 @@ import { myPageMenu } from "../../../_variable/menu";
 import { useState } from "react";
 
 export default function SidebarSection() {
-  const [mypageTab, setMypageTab] = useState();
+  const [mypageTab, setMypageTab] = useState(-1);
+  console.log(mypageTab, "mypagetab");
 
   return (
     <Sidebar aria-label="Sidebar with call to action button example">
@@ -20,8 +21,10 @@ export default function SidebarSection() {
 
       <Sidebar.Items>
         <Sidebar.ItemGroup>
-          {myPageMenu.map((item) => (
-            <Sidebar.Item href={item.link}>{item.title}</Sidebar.Item>
+          {myPageMenu.map((item, idx) => (
+            <Sidebar.Item href={item.link} onClick={() => setMypageTab(idx)}>
+              {item.title}
+            </Sidebar.Item>
           ))}
         </Sidebar.ItemGroup>
       </Sidebar.Items>

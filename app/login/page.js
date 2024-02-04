@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Login() {
   return (
     <main className="flex flex-col items-center my-5 md:w-8/12 mx-auto">
-      <h2 className="mx-auto text-2xl my-7">Login, play with me!</h2>
+      <h2 className="mx-auto text-2xl my-7">Login, play with us!</h2>
 
       <form className="flex flex-col gap-4 mb-2 w-1/2">
         <div className="block">

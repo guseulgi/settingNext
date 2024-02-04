@@ -1,3 +1,3 @@
 export default function LikeList() {
-  return <>!!!??!!!</>;
+  return <>LikeList</>;
 }

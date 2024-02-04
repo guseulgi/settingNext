@@ -34,7 +34,7 @@ export default function Signin() {
 
   return (
     <form className="flex flex-col gap-6 my-5">
-      <h2 className="mx-auto text-2xl mt-6 mb-3">Register, play with me!</h2>
+      <h2 className="mx-auto text-2xl mt-6 mb-3">Register, play with us!</h2>
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
         <div className="mb-2 block ">
           <Label htmlFor="username" value="Username" />

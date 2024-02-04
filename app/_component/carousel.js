@@ -19,13 +19,32 @@ export default function Carousel() {
       <div className="relative h-80 overflow-hidden rounded-lg md:h-96">
         <div className=" duration-700 ease-in-out" data-carousel-item="active">
           {curNum === "0" && (
-            <Image
-              src="/slide3.jpeg"
-              width={300}
-              height={300}
-              className="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-              alt="..."
-            />
+            <div className="relative">
+              <div className="absolute bottom-2 right-0">
+                <svg
+                  class="w-6 h-6 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6C6.5 1 1 8 5.8 13l6.2 7 6.2-7C23 8 17.5 1 12 6Z"
+                  />
+                </svg>
+              </div>
+              <Image
+                src="/slide3.jpeg"
+                width={300}
+                height={300}
+                className="absolute block -translate-x-1/2 top-1/2 left-1/2"
+                alt="..."
+              />
+            </div>
           )}
           {curNum === "1" && (
             <Image
