@@ -11,8 +11,8 @@ export default async function Getcha() {
       <span className="font-bold text-slate-950">오늘의 포켓몬!</span>
       <hr />
       <p className="mt-10 font-bold text-2xl">
-        {koname} ({enpkname}){" "}
-        <span className="font-normal text-sm">({pknum})</span>
+        {koname} ({enpkname})
+        <span className="font-normal text-sm">{pknum}</span>
       </p>
       <hr />
       <p>{type}</p>
