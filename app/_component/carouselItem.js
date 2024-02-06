@@ -31,7 +31,7 @@ export default function CarouselItem({ imgSrc, size, curNum }) {
         </svg>
       </div>
 
-      <Image
+      <img
         src={imgSrc}
         width={size.width}
         height={size.height}

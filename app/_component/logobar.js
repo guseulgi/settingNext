@@ -5,6 +5,7 @@ import Button from "./button";
 import SearchBar from "./searchbar";
 import { useState } from "react";
 import ModbileNavbar from "./mobileNavbar";
+import Link from "next/link";
 
 const loginButtonStlye =
   "cursor-pointer hover:-translate-y-1 hover:scale-100 scale-90 duration-100 mr-2 mt-2";
@@ -45,13 +46,14 @@ export default function Logobar() {
             </svg>
           </button>
 
-          <Image
-            src="/moncolle.png"
-            width={140}
-            height={30}
-            alt="몬콜레 로고"
-            style={{ width: "140px" }}
-          />
+          <Link href="/" style={{ width: "140px" }}>
+            <Image
+              src="/moncolle.png"
+              width={140}
+              height={30}
+              alt="몬콜레 로고"
+            />
+          </Link>
         </div>
 
         <div className="flex">

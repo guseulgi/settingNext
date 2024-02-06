@@ -2,9 +2,15 @@
 
 import { useState } from "react";
 import CloseButton from "./closeButton";
+import { useRouter } from "next/navigation";
 
-export default function Modal({ content, noA }) {
+export default function Modal({ content, noA, yesA }) {
   const [close, setClose] = useState("flex");
+  const router = useRouter();
+
+  const loginRedirect = () => {
+    router.replace("/login");
+  };
 
   const CloseModal = () => {
     setClose("hidden");
@@ -38,6 +44,17 @@ export default function Modal({ content, noA }) {
             <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
               {content}
             </h3>
+
+            {yesA && (
+              <button
+                dataModalHide="popup-modal"
+                onClick={loginRedirect}
+                type="button"
+                className=" text-gray-500 mr-5 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+              >
+                {yesA}
+              </button>
+            )}
 
             <button
               dataModalHide="popup-modal"
