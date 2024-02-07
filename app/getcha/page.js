@@ -1,4 +1,5 @@
 import { Badge } from "flowbite-react";
+import TextCarousel from "./_component/textcarousel";
 
 export default async function Getcha() {
   const data = await fetchData();
@@ -8,6 +9,7 @@ export default async function Getcha() {
   const koname = data.props.koname;
   const type = data.props.type;
   const detail = data.props.detail;
+  const color = data.props.color;
 
   return (
     <div>
@@ -27,20 +29,20 @@ export default async function Getcha() {
         )}
         {type && (
           <div className="inline-block">
-            <Badge color="indigo" size="sm">
+            <Badge color={color} size="sm">
               {type}
             </Badge>
           </div>
         )}
       </div>
-      <p className="my-5">{detail}</p>
 
-      <hr />
+      <TextCarousel detailArr={detail} />
     </div>
   );
 }
 
 async function fetchData() {
+  let detailArr = [];
   const baseApi = "https://pokeapi.co/api/v2/";
   let randNum = Math.round(parseInt(Math.random() * 1400));
 
@@ -54,18 +56,19 @@ async function fetchData() {
   const genera = details.genera.map((item) => {
     if (item.language.name === "ko") return item.genus;
   });
-  const detail = details.flavor_text_entries.map((item) => {
-    if (item.language.name === "ko") return item.flavor_text + `\n`;
+  details.flavor_text_entries.map((item, idx) => {
+    if (item.language.name === "ko") {
+      detailArr.push(item.flavor_text);
+    }
   });
-
-  console.log("details", details);
 
   return {
     props: {
       data: details,
       koname: kopkname,
       type: genera,
-      detail: detail,
+      detail: detailArr,
+      color: details.color.name,
     },
   };
 }
