@@ -5,10 +5,10 @@ export default function MyPageLayout({ children, modal }) {
     <div className="flex gap-5">
       <SidebarSection />
 
-      <div className="">
+      <>
         {children}
         {modal}
-      </div>
+      </>
     </div>
   );
 }
