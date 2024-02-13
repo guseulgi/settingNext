@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function CardSection({ name, detail }) {
   return (
-    <Card className="max-w-sm mx-auto my-auto">
+    <Card className="max-w-sm">
       <div className="flex flex-col items-center pb-10 ">
         {/* <Image
           alt="Bonnie image"

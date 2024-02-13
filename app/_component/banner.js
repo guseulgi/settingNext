@@ -3,12 +3,15 @@
 import Link from "next/link";
 import CloseButton from "./closeButton";
 import { useState } from "react";
+import usePopbanner from "../_store/storage";
 
 export default function PopBanner() {
   const [close, setClose] = useState("fixed");
+  const { setSelectedButton } = usePopbanner();
 
   const CloseBanner = () => {
     setClose("hidden");
+    setSelectedButton({ selectedButton: false });
   };
 
   return (
