@@ -6,11 +6,13 @@ import Link from "next/link";
 
 export default function CardSection({ name, detail }) {
   return (
-    <div className="w-1/2 h-full py-7 mx-auto border-[1px] border-gray-700 rounded-md">
-      <div className="w-1/12 h-full bg-slate-600"> </div>
-      <div className="flex flex-col items-center ">
-        <div className=" mb-3 rounded-full shadow-lg relative">
-          {/* <svg
+    <div className="w-2/3 h-2/3 mx-auto border-[3px] border-slate-700 rounded-md">
+      <div className="w-full h-full border-l-[18px] border-r-[18px] border-slate-400">
+        <div className="w-full h-full border-l-8 border-r-8 border-slate-400/80">
+          <div className="w-full h-full py-8 px-10  border-l-4 border-r-4 border-slate-400/60">
+            <div className="flex flex-col items-center ">
+              <div className=" mb-3 rounded-full shadow-lg relative">
+                {/* <svg
             class="w-28 h-28 text-gray-800 dark:text-white"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
@@ -23,48 +25,57 @@ export default function CardSection({ name, detail }) {
               clip-rule="evenodd"
             />
           </svg> */}
-          <Image
-            alt="Bonnie image"
-            height="96"
-            src="/red.webp"
-            width="96"
-            className="mb-3 rounded-full shadow-lg"
-          />
+                <Image
+                  alt="profile"
+                  height="96"
+                  src="/red.webp"
+                  width="96"
+                  className="rounded-full size-20 object-scale-down"
+                />
 
-          <label for="file">
-            <div className="w-6 h-4 text-[10px] pl-[2px] text-gray-200 bg-slate-400 rounded-xs absolute right-2 bottom-2">
-              Edit
+                <label for="file">
+                  <div className="w-6 h-4 text-[10px] pl-[2px] text-gray-200 bg-slate-400 rounded-xs absolute right-2 bottom-2">
+                    Edit
+                  </div>
+                </label>
+                <input
+                  type="file"
+                  name="file"
+                  id="file"
+                  className="hidden"
+                  accept=".jpeg, .jpg, .png"
+                />
+              </div>
+
+              <h5 className="my-1 text-xl mb-4 font-medium text-gray-900 dark:text-white">
+                {name}
+              </h5>
+              <span className="text-sm text-gray-500 dark:text-gray-400 mb-2 w-2/3">
+                <FloatingLabel
+                  variant="standard"
+                  label="나의 설명을 적어주세요"
+                  sizing="sm"
+                  value={detail}
+                />
+              </span>
+
+              <div className="w-2/3 flex space-x-3 justify-end mb-2">
+                <Image
+                  src="/ball.png"
+                  width="16"
+                  height="16"
+                  className="size-8"
+                />
+                <Link
+                  href="/mypage/profile"
+                  color="blue"
+                  className="inline-flex items-center rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  수정
+                </Link>
+              </div>
             </div>
-          </label>
-          <input
-            type="file"
-            name="file"
-            id="file"
-            className="hidden"
-            accept=".jpeg, .jpg, .png"
-          />
-        </div>
-
-        <h5 className="my-1 text-xl mb-4 font-medium text-gray-900 dark:text-white">
-          {name}
-        </h5>
-        <span className="text-sm text-gray-500 dark:text-gray-400 mb-2 w-2/3">
-          <FloatingLabel
-            variant="standard"
-            label="나의 설명을 적어주세요"
-            sizing="sm"
-            value={detail}
-          />
-        </span>
-
-        <div className="w-2/3 flex space-x-3 justify-end mb-2">
-          <Link
-            href="/mypage/profile"
-            color="blue"
-            className="inline-flex items-center rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            수정
-          </Link>
+          </div>
         </div>
       </div>
     </div>
