@@ -6,3 +6,9 @@
   margin-left: 40px;
   margin-right: 40px;
 }
+
+@font-face {
+  font-family: "DungGeunMo";
+  font-weight: 400;
+  src: url("/fonts/DungGeunMo.ttf") format("truetype");
+}

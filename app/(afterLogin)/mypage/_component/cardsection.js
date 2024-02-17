@@ -6,7 +6,10 @@ import Link from "next/link";
 
 export default function CardSection({ name, detail }) {
   return (
-    <div className="w-2/3 h-2/3 mx-auto border-[3px] border-slate-700 rounded-md">
+    <div
+      className="w-2/3 h-2/3 mx-auto border-[3px] border-slate-700 rounded-md
+     font-pixel"
+    >
       <div className="w-full h-full border-l-[18px] border-r-[18px] border-slate-400">
         <div className="w-full h-full border-l-8 border-r-8 border-slate-400/80">
           <div className="w-full h-full py-8 px-10  border-l-4 border-r-4 border-slate-400/60">
@@ -34,7 +37,7 @@ export default function CardSection({ name, detail }) {
                 />
 
                 <label for="file">
-                  <div className="w-6 h-4 text-[10px] pl-[2px] text-gray-200 bg-slate-400 rounded-xs absolute right-2 bottom-2">
+                  <div className="w-6 h-4 text-[10px] pl-[2px] text-gray-200 bg-slate-400 rounded-xs absolute right-0 bottom-1 cursor-pointer">
                     Edit
                   </div>
                 </label>
@@ -53,19 +56,21 @@ export default function CardSection({ name, detail }) {
               <span className="text-sm text-gray-500 dark:text-gray-400 mb-2 w-2/3">
                 <FloatingLabel
                   variant="standard"
-                  label="나의 설명을 적어주세요"
+                  label="당신의 설명을 적어주세요"
                   sizing="sm"
                   value={detail}
                 />
               </span>
 
-              <div className="w-2/3 flex space-x-3 justify-end mb-2">
-                <Image
-                  src="/ball.png"
-                  width="16"
-                  height="16"
-                  className="size-8"
-                />
+              <div className="w-2/3 flex gap-2 justify-end mb-2">
+                {[1, 2, 3, 4, 5].map(() => (
+                  <Image
+                    src="/ball2.png"
+                    width="14"
+                    height="14"
+                    className="size-6 my-auto hover:-translate-y-1"
+                  />
+                ))}
                 <Link
                   href="/mypage/profile"
                   color="blue"
