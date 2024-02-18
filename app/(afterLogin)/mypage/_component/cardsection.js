@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, FloatingLabel } from "flowbite-react";
+import { FloatingLabel } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -63,20 +63,25 @@ export default function CardSection({ name, detail }) {
               </span>
 
               <div className="w-2/3 flex gap-2 justify-end mb-2">
-                {[1, 2, 3, 4, 5].map(() => (
-                  <Image
-                    src="/ball2.png"
-                    width="14"
-                    height="14"
-                    className="size-6 my-auto hover:-translate-y-1"
-                  />
-                ))}
                 <Link
                   href="/mypage/profile"
                   color="blue"
                   className="inline-flex items-center rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   수정
+                  <svg
+                    class="w-5 h-6"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 16 24"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.3 5.6A2 2 0 0 0 7 7v10a2 2 0 0 0 3.3 1.5l5.9-4.9a2 2 0 0 0 0-3l-6-5Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
                 </Link>
               </div>
             </div>

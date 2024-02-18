@@ -3,6 +3,7 @@
 import { Badge, Sidebar } from "flowbite-react";
 import { myPageMenu } from "../../../_variable/menu";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function SidebarSection() {
   const [mypageTab, setMypageTab] = useState(-1);
@@ -15,15 +16,27 @@ export default function SidebarSection() {
           <Badge color="warning">공지</Badge>
         </div>
         <div className="mb-1 text-sm text-cyan-900 dark:text-gray-400">
-          포켓몬스터! 몬스터콜렉션 테스팅 사이트에 오신 것을 환영합니다.
+          포켓몬스터의 세계에 잘 왔단다!
         </div>
       </Sidebar.CTA>
 
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           {myPageMenu.map((item, idx) => (
-            <Sidebar.Item href={item.link} onClick={() => setMypageTab(idx)}>
-              {item.title}
+            <Sidebar.Item
+              className=""
+              href={item.link}
+              onClick={() => setMypageTab(idx)}
+            >
+              <div className="flex justify-start gap-2 items-center group-hover:-translate-y-1">
+                <Image
+                  src="/ball2.png"
+                  width="14"
+                  height="14"
+                  className="size-6 my-auto"
+                />
+                {item.title}
+              </div>
             </Sidebar.Item>
           ))}
         </Sidebar.ItemGroup>
