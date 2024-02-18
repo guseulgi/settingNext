@@ -12,7 +12,7 @@ export default async function Getcha() {
   const color = data.props.color;
 
   return (
-    <div>
+    <div className="font-pixel">
       <span className="font-bold text-slate-950">오늘의 포켓몬!</span>
 
       <p className="mt-5 font-bold text-2xl">
@@ -50,25 +50,31 @@ async function fetchData() {
   const res = await fetch(detailApi, { next: { revalidate: 60 * 60 * 24 } });
   const details = await res.json();
 
-  const kopkname = details.names.map((item) => {
-    if (item.language.name === "ko") return item.name;
-  });
-  const genera = details.genera.map((item) => {
-    if (item.language.name === "ko") return item.genus;
-  });
-  details.flavor_text_entries.map((item, idx) => {
-    if (item.language.name === "ko") {
-      detailArr.push(item.flavor_text);
-    }
-  });
+  try {
+    const kopkname = details.names.map((item) => {
+      if (item.language.name === "ko") return item.name;
+    });
+    const genera = details.genera.map((item) => {
+      if (item.language.name === "ko") return item.genus;
+    });
+    details.flavor_text_entries.map((item, idx) => {
+      if (item.language.name === "ko") {
+        detailArr.push(item.flavor_text);
+      }
+    });
 
-  return {
-    props: {
-      data: details,
-      koname: kopkname,
-      type: genera,
-      detail: detailArr,
-      color: details.color.name,
-    },
-  };
+    return {
+      props: {
+        data: details,
+        koname: kopkname,
+        type: genera,
+        detail: detailArr,
+        color: details.color.name,
+      },
+    };
+  } catch (err) {
+    console.log(err, "에러 발생");
+  }
+
+  return null;
 }

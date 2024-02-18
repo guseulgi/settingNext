@@ -37,11 +37,11 @@ export default function Signin() {
 
   return (
     <form className="flex flex-col gap-6 my-5">
-      <h2 className="mx-auto text-2xl mt-6 mb-3">
+      <h2 className="mx-auto text-2xl mt-6 mb-3 font-pixel">
         지금 가입하면 다양한 헤택이!
       </h2>
 
-      <div className="flex justify-around gap-4 mx-20">
+      <div className="flex justify-around gap-4 mx-20 font-pixel">
         <Toast>
           <HiFire className="h-5 w-5 text-cyan-300 dark:text-cyan-500" />
           <div className="pl-4 text-sm font-normal">몬콜레 지원금 2,000원</div>

@@ -10,24 +10,11 @@ export default function CardSection({ name, detail }) {
       className="w-2/3 h-2/3 mx-auto border-[3px] border-slate-700 rounded-md
      font-pixel"
     >
-      <div className="w-full h-full border-l-[18px] border-r-[18px] border-slate-400">
+      <div className="w-full h-full border-l-[14px] border-r-[20px] border-slate-400">
         <div className="w-full h-full border-l-8 border-r-8 border-slate-400/80">
           <div className="w-full h-full py-8 px-10  border-l-4 border-r-4 border-slate-400/60">
             <div className="flex flex-col items-center ">
               <div className=" mb-3 rounded-full shadow-lg relative">
-                {/* <svg
-            class="w-28 h-28 text-gray-800 dark:text-white"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M12 20a8 8 0 0 1-5-1.8v-.6c0-1.8 1.5-3.3 3.3-3.3h3.4c1.8 0 3.3 1.5 3.3 3.3v.6a8 8 0 0 1-5 1.8ZM2 12a10 10 0 1 1 10 10A10 10 0 0 1 2 12Zm10-5a3.3 3.3 0 0 0-3.3 3.3c0 1.7 1.5 3.2 3.3 3.2 1.8 0 3.3-1.5 3.3-3.3C15.3 8.6 13.8 7 12 7Z"
-              clip-rule="evenodd"
-            />
-          </svg> */}
                 <Image
                   alt="profile"
                   height="96"
