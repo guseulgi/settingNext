@@ -58,6 +58,7 @@ export default function Logobar() {
 
         <div className="flex gap-2">
           <SearchBar />
+
           <Button
             // title="Login"
             path="/PokeBall.png"
@@ -65,22 +66,19 @@ export default function Logobar() {
             imgStyle={loginButtonStlye}
             href="/login"
           />
+
           <Link
             href="/mypage/likelist"
-            className="border-[1px] border-white hover:border-slate-300 rounded-full m-auto p-1 hover:rotate-3"
+            className=" hover:bg-slate-300/40 rounded-full m-auto p-1 hover:rotate-3"
           >
             <svg
-              class="w-6 h-6 text-blue-800"
+              class="w-6 h-6 text-gray-800 dark:text-white"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
-              <path
-                fill-rule="evenodd"
-                d="M4 4c0-.6.4-1 1-1h1.5c.5 0 .9.3 1 .8L7.9 6H19a1 1 0 0 1 1 1.2l-1.3 6a1 1 0 0 1-1 .8h-8l.2 1H17a3 3 0 1 1-2.8 2h-2.4a3 3 0 1 1-4-1.8L5.7 5H5a1 1 0 0 1-1-1Z"
-                clip-rule="evenodd"
-              />
+              <path d="m12.7 20.7 6.2-7.1c2.7-3 2.6-6.5.8-8.7A5 5 0 0 0 16 3c-1.3 0-2.7.4-4 1.4A6.3 6.3 0 0 0 8 3a5 5 0 0 0-3.7 1.9c-1.8 2.2-2 5.8.8 8.7l6.2 7a1 1 0 0 0 1.4 0Z" />
             </svg>
           </Link>
         </div>

@@ -2,9 +2,16 @@
 
 import { FloatingLabel } from "flowbite-react";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function CardSection({ name, detail }) {
+  const changeInfo = () => {
+    const anw = confirm("내 정보를 수정하시겠습니까?");
+    if (anw) {
+      // 정보 수정
+    } else {
+    }
+  };
+
   return (
     <div
       className="w-2/3 h-2/3 mx-auto border-[3px] border-slate-700 rounded-md
@@ -50,8 +57,8 @@ export default function CardSection({ name, detail }) {
               </span>
 
               <div className="w-2/3 flex gap-2 justify-end mb-2">
-                <Link
-                  href="/mypage/profile"
+                <button
+                  onClick={() => changeInfo()}
                   color="blue"
                   className="inline-flex items-center rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
@@ -69,7 +76,7 @@ export default function CardSection({ name, detail }) {
                       clip-rule="evenodd"
                     />
                   </svg>
-                </Link>
+                </button>
               </div>
             </div>
           </div>

@@ -39,5 +39,5 @@ export const myPageMenu = [
   },
   { title: "개인정보수정", link: "/mypage/profile" },
   { title: "도움말", link: "/help" },
-  { title: "로그아웃", link: "/logout" },
+  { title: "로그아웃", link: "/" },
 ];

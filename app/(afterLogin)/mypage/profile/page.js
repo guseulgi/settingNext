@@ -12,6 +12,7 @@ export default function Profile() {
             id="nickname"
             type=""
             required
+            addon="@"
             color="blue"
             value="임시이름"
           />
@@ -39,6 +40,10 @@ export default function Profile() {
             color="blue"
             disabled
           />
+          <div className="flex items-center gap-2 mt-2">
+            <Checkbox id="remember" color="blue" />
+            <Label htmlFor="remember">이메일로 혜택을 받으시겠습니까?</Label>
+          </div>
         </div>
 
         <div className="block w-1/2">
@@ -56,7 +61,20 @@ export default function Profile() {
         </div>
 
         <Button type="submit" color="blue" className="w-1/2 mt-3">
-          변경
+          다음으로
+          <svg
+            class="w-5 h-6"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 16 24"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.3 5.6A2 2 0 0 0 7 7v10a2 2 0 0 0 3.3 1.5l5.9-4.9a2 2 0 0 0 0-3l-6-5Z"
+              clip-rule="evenodd"
+            />
+          </svg>
         </Button>
       </form>
     </>
