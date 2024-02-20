@@ -14,7 +14,7 @@ export default function CardSection({ name, detail }) {
 
   return (
     <div
-      className="w-2/3 h-2/3 mx-auto border-[3px] border-slate-700 rounded-md
+      className="w-4/5 md:w-3/4 lg:w-2/3 h-2/3 mx-auto border-[3px] border-slate-700 rounded-md
      font-pixel"
     >
       <div className="w-full h-full border-l-[14px] border-r-[20px] border-slate-400">

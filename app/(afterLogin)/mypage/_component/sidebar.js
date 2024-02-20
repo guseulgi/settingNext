@@ -25,9 +25,9 @@ export default function SidebarSection() {
   return (
     <Sidebar
       aria-label="Sidebar with call to action button example"
-      className="border-[3px] border-slate-700 rounded-md"
+      className="md:border-[3px] md:border-slate-700 rounded-md"
     >
-      <Sidebar.CTA className="mb-2 border-[1px] border-slate-700 rounded-md">
+      <Sidebar.CTA className="mb-2 border-[1px] border-slate-700 rounded-md hidden md:block">
         <div className="mb-2 flex items-center">
           <Badge color="warning">오박사</Badge>
         </div>
@@ -39,12 +39,8 @@ export default function SidebarSection() {
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           {myPageMenu.map((item, idx) => (
-            <Sidebar.Item
-              className=""
-              href={item.link}
-              onClick={() => clickSidebar(idx)}
-            >
-              <div className="flex justify-start gap-2 items-center group-hover:-translate-y-1">
+            <Sidebar.Item href={item.link} onClick={() => clickSidebar(idx)}>
+              <div className="flex justify-start gap-2 items-center ">
                 <Image
                   src="/ball2.png"
                   alt="pokeball"
