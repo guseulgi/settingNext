@@ -57,6 +57,28 @@ export default function CardSection({ name, detail }) {
               </span>
 
               <div className="w-2/3 flex gap-2 justify-end mb-2">
+                <Image
+                  src="/ball4.webp"
+                  width="20"
+                  height="20"
+                  style={{ width: 30, height: 30 }}
+                  alt="메뉴"
+                />
+                <Image
+                  src="/ball4.webp"
+                  width="20"
+                  height="20"
+                  style={{ width: 30, height: 30 }}
+                  alt="메뉴"
+                />
+                <Image
+                  src="/ball4.webp"
+                  width="20"
+                  height="20"
+                  style={{ width: 30, height: 30 }}
+                  alt="메뉴"
+                />
+
                 <button
                   onClick={() => changeInfo()}
                   color="blue"

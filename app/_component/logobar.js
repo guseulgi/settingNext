@@ -6,10 +6,11 @@ import SearchBar from "./searchbar";
 import { useState } from "react";
 import ModbileNavbar from "./mobileNavbar";
 import Link from "next/link";
+import { Tooltip } from "flowbite-react";
 
 const loginButtonStlye =
-  "cursor-pointer hover:-translate-y-1 hover:scale-100 scale-90 duration-100 m-auto";
-const loginButtonSize = { w: 28, h: 28 };
+  "cursor-pointer mt-1 hover:-translate-y-1 hover:scale-110 scale-100 duration-100";
+const loginButtonSize = { w: 30, h: 30 };
 
 export default function Logobar() {
   const [isBlock, setIsBlock] = useState(false);
@@ -59,28 +60,40 @@ export default function Logobar() {
         <div className="flex gap-2">
           <SearchBar />
 
-          <Button
-            // title="Login"
-            path="/PokeBall.png"
-            size={loginButtonSize}
-            imgStyle={loginButtonStlye}
-            href="/login"
-          />
-
-          <Link
-            href="/mypage/likelist"
-            className=" hover:bg-slate-300/40 rounded-full m-auto p-1 hover:rotate-3"
+          <Tooltip
+            content="로그인"
+            placement="bottom"
+            style="light"
+            arrow={false}
+            className="m-auto"
           >
-            <svg
-              class="w-6 h-6 text-gray-800 dark:text-white"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="m12.7 20.7 6.2-7.1c2.7-3 2.6-6.5.8-8.7A5 5 0 0 0 16 3c-1.3 0-2.7.4-4 1.4A6.3 6.3 0 0 0 8 3a5 5 0 0 0-3.7 1.9c-1.8 2.2-2 5.8.8 8.7l6.2 7a1 1 0 0 0 1.4 0Z" />
-            </svg>
-          </Link>
+            <Button
+              // title="Login"
+              path="/ball3.webp"
+              size={loginButtonSize}
+              imgStyle={loginButtonStlye}
+              href="/login"
+            />
+          </Tooltip>
+
+          <Tooltip
+            content="좋아요"
+            placement="bottom"
+            style="light"
+            arrow={false}
+          >
+            <Link href="/mypage/likelist" className="inline-block mt-2">
+              <svg
+                class="w-6 h-6 text-gray-800 dark:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="m12.7 20.7 6.2-7.1c2.7-3 2.6-6.5.8-8.7A5 5 0 0 0 16 3c-1.3 0-2.7.4-4 1.4A6.3 6.3 0 0 0 8 3a5 5 0 0 0-3.7 1.9c-1.8 2.2-2 5.8.8 8.7l6.2 7a1 1 0 0 0 1.4 0Z" />
+              </svg>
+            </Link>
+          </Tooltip>
         </div>
       </div>
 
