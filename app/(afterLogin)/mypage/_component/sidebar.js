@@ -23,37 +23,64 @@ export default function SidebarSection() {
   };
 
   return (
-    <Sidebar
-      aria-label="Sidebar with call to action button example"
-      className="hidden md:block md:border-[3px] md:border-slate-700 rounded-md"
-    >
-      <Sidebar.CTA className="mb-2 border-[1px] border-slate-700 rounded-md ">
-        <div className="mb-2 flex items-center">
-          <Badge color="warning">오박사</Badge>
-        </div>
-        <div className="mb-1 text-sm text-cyan-900 dark:text-gray-400">
-          포켓몬스터의 세계에 잘 왔단다!
-        </div>
-      </Sidebar.CTA>
+    <div className="flex text-xs md:block w-full md:w-auto mb-6 md:mb-0">
+      <Sidebar
+        aria-label="Sidebar with call to action button example"
+        className=" flex-1 md:flex-none md:border-[3px] md:border-slate-700 rounded-md"
+      >
+        <Sidebar.CTA className="mb-2 hidden md:block border-[1px] border-slate-700 rounded-md ">
+          <div className="mb-2 flex items-center">
+            <Badge color="warning">오박사</Badge>
+          </div>
+          <div className="mb-1 text-sm text-cyan-900 dark:text-gray-400">
+            포켓몬스터의 세계에 잘 왔단다!
+          </div>
+        </Sidebar.CTA>
 
-      <Sidebar.Items>
-        <Sidebar.ItemGroup>
-          {myPageMenu.map((item, idx) => (
-            <Sidebar.Item href={item.link} onClick={() => clickSidebar(idx)}>
-              <div className="flex justify-start gap-2 items-center ">
-                <Image
-                  src="/ball2.png"
-                  alt="pokeball"
-                  width="14"
-                  height="14"
-                  className="size-6 my-auto"
-                />
-                {item.title}
-              </div>
-            </Sidebar.Item>
-          ))}
-        </Sidebar.ItemGroup>
-      </Sidebar.Items>
-    </Sidebar>
+        <Sidebar.Items>
+          <Sidebar.ItemGroup className="flex justify-between md:block items-center">
+            {myPageMenu.map((item, idx) => {
+              if (idx === 0) {
+                return (
+                  <Sidebar.Item
+                    href={item.link}
+                    onClick={() => clickSidebar(idx)}
+                  >
+                    <div className="flex justify-start gap-1 md:gap-2 items-center h-full mt-2">
+                      <Image
+                        src="/ball2.png"
+                        alt="pokeball"
+                        width="14"
+                        height="14"
+                        className="size-6 md:my-auto"
+                      />
+                      {item.title}
+                    </div>
+                  </Sidebar.Item>
+                );
+              } else {
+                return (
+                  <Sidebar.Item
+                    href={item.link}
+                    onClick={() => clickSidebar(idx)}
+                  >
+                    <div className="flex justify-start gap-1 md:gap-2 items-center h-full">
+                      <Image
+                        src="/ball2.png"
+                        alt="pokeball"
+                        width="14"
+                        height="14"
+                        className="size-6 md:my-auto"
+                      />
+                      {item.title}
+                    </div>
+                  </Sidebar.Item>
+                );
+              }
+            })}
+          </Sidebar.ItemGroup>
+        </Sidebar.Items>
+      </Sidebar>
+    </div>
   );
 }
