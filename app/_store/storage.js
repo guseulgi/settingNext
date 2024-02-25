@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 
 const usePopbanner = create((set) => ({
   selectedButton: true,
