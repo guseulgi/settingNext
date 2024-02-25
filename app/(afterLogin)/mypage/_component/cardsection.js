@@ -56,7 +56,27 @@ export default function CardSection({ name, detail }) {
                 />
               </span>
 
-              <div className="w-2/3 flex gap-2 justify-end mb-2">
+              <div className="w-2/3 flex justify-between mb-2">
+                <div className="flex gap-2 my-auto">
+                  <div className="w-5 h-5  bg-yellow-300 rounded-full shadow-md">
+                    <svg
+                      class="w-4 h-4 m-auto -rotate-4 pt-1 text-gray-700 dark:text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M8 17.3a5 5 0 0 0 2.6 1.7c2.2.6 4.5-.5 5-2.3.4-2-1.3-4-3.6-4.5-2.3-.6-4-2.7-3.5-4.5.5-1.9 2.7-3 5-2.3 1 .2 1.8.8 2.5 1.6m-3.9 12v2m0-18v2.2"
+                      />
+                    </svg>
+                  </div>
+                  <p className=" leading-5 ">9999</p>
+                </div>
                 <button
                   onClick={() => changeInfo()}
                   color="blue"
