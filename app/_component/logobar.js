@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import Button from "./button";
-import SearchBar from "./searchbar";
 import { useState } from "react";
-import ModbileNavbar from "./mobileNavbar";
+import MobileNavbar from "./mobileNavbar";
 import Link from "next/link";
 import { Tooltip } from "flowbite-react";
 
@@ -58,8 +57,6 @@ export default function Logobar() {
         </div>
 
         <div className="flex gap-2">
-          <SearchBar />
-
           <Tooltip
             content="로그인"
             placement="bottom"
@@ -97,7 +94,7 @@ export default function Logobar() {
         </div>
       </div>
 
-      <ModbileNavbar block={isBlock} />
+      <MobileNavbar block={isBlock} />
     </>
   );
 }
