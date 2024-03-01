@@ -24,8 +24,8 @@ export default function SidebarSection() {
   };
 
   return (
-    <div className="md:flex-none md:border-[3px] md:border-slate-700 rounded-md">
-      <div className="hidden md:block border-[1px] border-slate-700 rounded-md ">
+    <div className=" bg-gray-50 md:flex-none md:border-[3px] md:border-slate-700 rounded-md">
+      <div className="bg-gray-200 m-3 px-4 py-2 hidden md:block border-[1px] border-slate-700 rounded-md ">
         <div className="mb-2 flex items-center">
           <Badge color="warning">오박사</Badge>
         </div>
@@ -34,7 +34,7 @@ export default function SidebarSection() {
         </div>
       </div>
 
-      <div className="flex justify-between md:block items-center py-2 px-6 rounded-sm bg-gray-100">
+      <div className="flex justify-between md:block items-center py-2 px-6 rounded-sm ">
         {myPageMenu.map((item, idx) => {
           return (
             <Link
@@ -42,7 +42,7 @@ export default function SidebarSection() {
               onClick={() => clickSidebar(idx)}
               className="block py-2 md:pl-0 px-6 hover:bg-gray-200 hover:rounded-md duration-200"
             >
-              <div className="flex justify-start gap-1 md:gap-2 items-center h-full">
+              <div className="flex justify-start gap-1 md:gap-2 px-2 items-center h-full">
                 <Image
                   src="/ball2.png"
                   alt="pokeball"

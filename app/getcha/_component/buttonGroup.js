@@ -1,13 +1,14 @@
 "use client";
 
-import { Tooltip } from "flowbite-react";
+import { Button, Tooltip } from "flowbite-react";
 import ArrowButton from "./arrowButton";
 import { copyURL } from "../_lib/buttonEvent";
-import SearchBar from "@/app/_component/searchbar";
 import { useRouter } from "next/navigation";
 import { Popover } from "flowbite";
+import { useState } from "react";
 
 export default function ButtonGroup({ curNum }) {
+  const [open, setOpen] = useState(false);
   const searchPokemon = (value) => {
     const router = useRouter();
 
@@ -57,8 +58,8 @@ export default function ButtonGroup({ curNum }) {
           </svg>
         </div>
       </Tooltip>
-      <Tooltip content="검색하기" placement="bottom" style="dark">
-        <div onClick={searchPokemon} className="cursor-pointer">
+      {/* <Tooltip content="검색하기" placement="bottom" style="dark">
+        <div onClick={() => searchPokemon(value)} className="cursor-pointer">
           <svg
             class="w-6 h-6 text-gray-800 dark:text-white"
             aria-hidden="true"
@@ -73,9 +74,8 @@ export default function ButtonGroup({ curNum }) {
               d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
             />
           </svg>
-          <Popover aria-labelledby="profile-popover" content={<></>}></Popover>
         </div>
-      </Tooltip>
+      </Tooltip> */}
       <Tooltip content="공유하기" placement="bottom" style="dark">
         <svg
           class="w-6 h-6 text-gray-800 dark:text-white"

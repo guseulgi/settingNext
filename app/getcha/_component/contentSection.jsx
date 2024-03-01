@@ -1,5 +1,4 @@
 import { Badge, Progress } from "flowbite-react";
-import ArrowButton from "./arrowButton";
 import TextCarousel from "./textcarousel";
 import { fetchData } from "../_lib/fetching";
 import ButtonGroup from "./buttonGroup";
@@ -42,7 +41,7 @@ export default async function ContentSection({ curNum }) {
       <TextCarousel detailArr={detail} />
 
       <div className="w-1/3 h-5 mt-4 mx-auto">
-        <Progress progress={(parseInt(curNum) / 1400) * 100} color="gray" />
+        <Progress progress={(parseInt(curNum) / 897) * 100} color="gray" />
       </div>
       <ButtonGroup curNum={curNum} />
     </>

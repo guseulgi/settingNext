@@ -2,13 +2,11 @@ import SidebarSection from "./_component/sidebar";
 
 export default function MyPageLayout({ children, modal }) {
   return (
-    <div className="md:flex block gap-1 md:gap-5 font-pixel ">
+    <div className="h-[42dvh] md:flex block gap-1 md:gap-5 font-pixel ">
       <SidebarSection />
 
-      <>
-        {children}
-        {modal}
-      </>
+      {children}
+      {modal}
     </div>
   );
 }

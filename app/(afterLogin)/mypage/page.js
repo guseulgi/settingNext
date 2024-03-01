@@ -1,9 +1,9 @@
-import DefaultPage from "./_component/defaultpage";
+import CardSection from "./_component/cardsection";
 
 export default function MyPage() {
   return (
-    <>
-      <DefaultPage />
-    </>
+    <div className="flex-1 m-auto h-full">
+      <CardSection name="임시이름" />
+    </div>
   );
 }
