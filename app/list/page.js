@@ -1,19 +1,49 @@
+import { Breadcrumb } from "flowbite-react";
 import Carousel from "../_component/carousel";
 
 export default function AllList() {
   return (
     <>
-      <span className="font-bold text-slate-950">NEW 몬콜레</span>
-      <hr />
+      <Breadcrumb
+        aria-label="Solid background breadcrumb example"
+        className="bg-gray-50 px-5 py-3 dark:bg-gray-800"
+      >
+        <Breadcrumb.Item>몬콜레 시리즈</Breadcrumb.Item>
+        <Breadcrumb.Item>New 몬콜레</Breadcrumb.Item>
+      </Breadcrumb>
       <Carousel />
-      <span className="font-bold text-slate-950">몬콜레 MS 시리즈</span>
-      <hr />
-      <span className="font-bold text-slate-950">몬콜레 MM 시리즈</span>
-      <hr />
-      <span className="font-bold text-slate-950">몬콜레 ML 시리즈</span>
-      <hr />
-      <span className="font-bold text-slate-950">몬콜레 스폐셜 시리즈</span>
-      <hr />
+
+      <Breadcrumb
+        aria-label="Solid background breadcrumb example"
+        className="bg-gray-50 px-5 py-3 dark:bg-gray-800"
+      >
+        <Breadcrumb.Item>몬콜레 시리즈</Breadcrumb.Item>
+        <Breadcrumb.Item>몬콜레 MS</Breadcrumb.Item>
+      </Breadcrumb>
+
+      <Breadcrumb
+        aria-label="Solid background breadcrumb example"
+        className="bg-gray-50 px-5 py-3 dark:bg-gray-800"
+      >
+        <Breadcrumb.Item>몬콜레 시리즈</Breadcrumb.Item>
+        <Breadcrumb.Item>몬콜레 MM </Breadcrumb.Item>
+      </Breadcrumb>
+
+      <Breadcrumb
+        aria-label="Solid background breadcrumb example"
+        className="bg-gray-50 px-5 py-3 dark:bg-gray-800"
+      >
+        <Breadcrumb.Item>몬콜레 시리즈</Breadcrumb.Item>
+        <Breadcrumb.Item>몬콜레 ML </Breadcrumb.Item>
+      </Breadcrumb>
+
+      <Breadcrumb
+        aria-label="Solid background breadcrumb example"
+        className="bg-gray-50 px-5 py-3 dark:bg-gray-800"
+      >
+        <Breadcrumb.Item>몬콜레 시리즈</Breadcrumb.Item>
+        <Breadcrumb.Item>몬콜레 스폐셜</Breadcrumb.Item>
+      </Breadcrumb>
     </>
   );
 }

@@ -5,7 +5,7 @@ export const menu = [
     alt: "공지사항",
   },
   {
-    name: "몬콜레?",
+    name: "몬콜레란?",
     href: "/main",
     alt: "몬콜레에 대한 설명",
   },

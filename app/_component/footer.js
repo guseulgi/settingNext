@@ -11,7 +11,7 @@ const 소개 = [
 
 export default function Footer() {
   return (
-    <div className="bg-gray-100 mt-24 ">
+    <div className="bg-gray-100 mt-20 ">
       <div className="flex text-xs text-gray-400 justify-center py-5">
         {소개.map((소갯말, 인덱스) => {
           return (

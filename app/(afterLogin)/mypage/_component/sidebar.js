@@ -24,7 +24,7 @@ export default function SidebarSection() {
   };
 
   return (
-    <div className=" bg-gray-50 md:flex-none md:border-[3px] md:border-slate-700 rounded-md">
+    <div className="h-[42dvh] bg-gray-50 md:flex-none md:border-[3px] md:border-slate-700 rounded-md">
       <div className="bg-gray-200 m-3 px-4 py-2 hidden md:block border-[1px] border-slate-700 rounded-md ">
         <div className="mb-2 flex items-center">
           <Badge color="warning">오박사</Badge>
