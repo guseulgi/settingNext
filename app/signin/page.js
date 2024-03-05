@@ -57,7 +57,20 @@ export default function Signin() {
       </div>
 
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
-        <div className="mb-2 block ">
+        <div className="mb-2 flex items-center ">
+          <svg
+            class="w-5 h-5 mr-1 text-gray-500 dark:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M15.5 3.3a1 1 0 0 0-1.4 0l-2 2h.1l6.5 6.5 2-1.9c.4-.4.4-1 0-1.4l-5.2-5.2ZM7 8.3l3.9-1.5 6.3 6.3-1.5 3.9a1 1 0 0 1-.6.6l-9.5 3.3a1 1 0 0 1-1-.1l6.5-6.5A1 1 0 0 0 9.7 13l-6.5 6.4a1 1 0 0 1-.1-1L6.4 9c.1-.3.3-.5.6-.6Z"
+              clip-rule="evenodd"
+            />
+          </svg>
           <Label htmlFor="username" value="닉네임" />
         </div>
         <TextInput
@@ -94,7 +107,20 @@ export default function Signin() {
       </div>
 
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
-        <div className="mb-2 block">
+        <div className="mb-2 flex items-center">
+          <svg
+            class="w-5 h-5 mr-1 text-gray-500 dark:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 10V7a4 4 0 1 1 8 0v3h1a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7c0-1.1.9-2 2-2h1Zm2-3a2 2 0 1 1 4 0v3h-4V7Zm2 6c.6 0 1 .4 1 1v3a1 1 0 1 1-2 0v-3c0-.6.4-1 1-1Z"
+              clip-rule="evenodd"
+            />
+          </svg>
           <Label htmlFor="password" value="비밀번호" />
         </div>
         <TextInput
@@ -108,7 +134,25 @@ export default function Signin() {
       </div>
 
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
-        <div className="mb-2 block">
+        <div className="mb-2 flex items-center">
+          <svg
+            class="w-5 h-5 mr-1 text-gray-500 dark:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 5a2 2 0 0 0-2 2v3h2.4a7.5 7.5 0 0 0 0 11H5a2 2 0 0 1-2-2v-7c0-1.1.9-2 2-2h1V7a4 4 0 1 1 8 0v1.2c-.7 0-1.3.3-2 .6V7a2 2 0 0 0-2-2Z"
+              clip-rule="evenodd"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M10 15.5a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0Zm6.5-1.5a1 1 0 1 0-2 0v1.5c0 .3.1.5.3.7l1 1a1 1 0 0 0 1.4-1.4l-.7-.7V14Z"
+              clip-rule="evenodd"
+            />
+          </svg>
           <Label htmlFor="repeat-password" value="비밀번호 확인" />
         </div>
         <TextInput

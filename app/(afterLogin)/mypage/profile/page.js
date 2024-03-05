@@ -4,6 +4,7 @@ export default function Profile() {
   return (
     <>
       <form className="flex flex-col flex-1 items-center gap-3 ">
+        <label className="text-xl">개인정보변경</label>
         <div className="block w-1/2">
           <div className="mb-2">
             <Label htmlFor="nickname" value="닉네임" />
