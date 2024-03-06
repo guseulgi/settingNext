@@ -4,7 +4,6 @@ import { Label, TextInput, Checkbox, Button } from "flowbite-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Toast } from "flowbite-react";
-import { FaTelegramPlane } from "react-icons/fa";
 import { HiFire } from "react-icons/hi";
 
 const errMsg = ["Only input english", "Do not blink this field"];
