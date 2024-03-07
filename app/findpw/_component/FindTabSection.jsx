@@ -1,12 +1,17 @@
 "use client";
 
-import { Button, Checkbox, Label, TextInput, Toast } from "flowbite-react";
-import Link from "next/link";
+import { Button, Label, TextInput } from "flowbite-react";
 import { useState } from "react";
 
 export default function FindTabSection() {
+  const [isSend, setIsSend] = useState(false);
+
   return (
-    <form className="flex flex-col gap-6 my-5">
+    <form className="mt-10 flex flex-col gap-6">
+      <div className="mx-auto text-xl border-b-[1px] border-gray-400 pb-1">
+        비밀번호 찾기
+      </div>
+
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
         <div className="mb-2 flex items-center">
           <svg
@@ -21,13 +26,19 @@ export default function FindTabSection() {
           </svg>
           <Label htmlFor="email" value="이메일" />
         </div>
-        <TextInput
-          id="email"
-          type="email"
-          placeholder="email@xxxxx.com"
-          required
-          color="blue"
-        />
+        <div className="flex gap-2">
+          <TextInput
+            id="email"
+            type="email"
+            placeholder="email@xxxxx.com"
+            required
+            color="blue"
+            className="flex-1"
+          />
+          <Button type="submit" color="blue" onClick={() => setIsSend(true)}>
+            인증 메일 보내기
+          </Button>
+        </div>
       </div>
 
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
@@ -39,26 +50,33 @@ export default function FindTabSection() {
             fill="currentColor"
             viewBox="0 0 24 24"
           >
-            <path
-              fill-rule="evenodd"
-              d="M8 10V7a4 4 0 1 1 8 0v3h1a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7c0-1.1.9-2 2-2h1Zm2-3a2 2 0 1 1 4 0v3h-4V7Zm2 6c.6 0 1 .4 1 1v3a1 1 0 1 1-2 0v-3c0-.6.4-1 1-1Z"
-              clip-rule="evenodd"
-            />
+            <path d="M17 6h-2V5h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2h-.5a6 6 0 0 1 1.5 4v4a1 1 0 1 1-2 0v-4a4 4 0 0 0-4-4h-.5C5 6 3 8 3 10.5V16c0 .6.4 1 1 1h7v3c0 .6.4 1 1 1h2c.6 0 1-.4 1-1v-3h5c.6 0 1-.4 1-1v-6a4 4 0 0 0-4-4Zm-9 8.5H7a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2Z" />
           </svg>
-          <Label htmlFor="password" value="비밀번호" />
+          <Label htmlFor="email" value="인증번호" />
         </div>
-        <TextInput
-          id="password1"
-          type="password"
-          required
-          shadow
-          color="blue"
-        />
+        {isSend ? (
+          <TextInput
+            id="number"
+            type="number"
+            placeholder="인증번호 입력"
+            required
+            color="blue"
+          />
+        ) : (
+          <TextInput
+            id="number"
+            type="number"
+            placeholder="인증번호 입력"
+            required
+            color="blue"
+            disabled
+          />
+        )}
       </div>
 
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
         <Button type="submit" className="w-full" color="blue">
-          내 정보를 찾습니다
+          인증번호 제출
         </Button>
       </div>
     </form>
