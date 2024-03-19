@@ -2,37 +2,37 @@
 
 import { Label, TextInput, Checkbox, Button } from "flowbite-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Toast } from "flowbite-react";
 import { HiFire } from "react-icons/hi";
+import { isNotKorean } from "@/utils/regex";
 
-const errMsg = ["Only input english", "Do not blink this field"];
+const errMsg = ["영어로 입력해주세요", "이 칸을 비우지 마세요"];
 
 // TODO 비밀번호 유효성
 export default function Signin() {
   const [name, setName] = useState("");
   const [pw, setPw] = useState("");
   const [checkPw, setCheckPw] = useState("");
-  const [inputPw, setInputPw] = useState("");
+  const [inputPw, setInputPw] = useState("비밀번호를 입력해주세요.");
 
   const inputName = (e) => {
+    if (e.nativeEvent.data && isNotKorean(e.nativeEvent.data)) {
+      e.preventDefault();
+      return;
+    }
+    console.log(e.nativeEvent.data);
     if (e.target.value === "") setName(errMsg[1]);
     else setName("");
   };
 
-  const cofirmPw = (e) => {
-    if (e.target.value !== "") setPw(e.target.value);
+  // 비밀번호 일치 여부
+  useEffect(() => {
+    if (pw === "" || checkPw === "") return;
 
-    if (pw === checkPw) setInputPw("Password is collected");
-    else setInputPw("Password is not collected");
-  };
-
-  const cofirmCheckPw = (e) => {
-    if (e.target.value !== "") setCheckPw(e.target.value);
-
-    if (pw === checkPw) setInputPw("Password is collected");
-    else setInputPw("Password is not collected");
-  };
+    if (pw !== checkPw) setInputPw("비밀번호가 같지 않습니다.");
+    else setInputPw("비밀번호가 같습니다.");
+  }, [pw, checkPw]);
 
   return (
     <form className="flex flex-col gap-6 my-5">
@@ -128,7 +128,7 @@ export default function Signin() {
           required
           shadow
           color="blue"
-          onChange={cofirmPw}
+          onChange={(e) => setPw(e.target.value)}
         />
       </div>
 
@@ -160,9 +160,9 @@ export default function Signin() {
           required
           shadow
           color="blue"
-          onChange={cofirmCheckPw}
+          onChange={(e) => setCheckPw(e.target.value)}
         />
-        <Label value={inputPw} className="text-red-500" />
+        <Label value={inputPw} className="text-red-500 mb-2" />
 
         <div className="flex items-center gap-2 mt-1">
           <Checkbox id="agree" color="blue" />

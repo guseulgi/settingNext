@@ -2,16 +2,39 @@
 
 import Link from "next/link";
 import CloseButton from "./closeButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import usePopbanner from "../_store/storage";
 
 export default function PopBanner() {
   const [close, setClose] = useState("fixed");
   const { setSelectedButton } = usePopbanner();
 
+  const openBannerKey = "openBanner";
+  useEffect(() => {
+    const val = localStorage.getItem(openBannerKey);
+    if (!val) return;
+
+    const now = new Date();
+    console.log("...", now.getTime(), JSON.parse(val).expiry);
+
+    if (now.getTime() > JSON.parse(val).expiry) {
+      setClose("fixed");
+      localStorage.removeItem(openBannerKey);
+      return;
+    }
+  }, []);
+
   const CloseBanner = () => {
     setClose("hidden");
     setSelectedButton({ selectedButton: false });
+
+    const now = new Date();
+    const ttl = 60 * 60 * 1000; // 배너 오픈 여부 한시간
+    const openBanner = {
+      value: false,
+      expiry: now.getTime() + ttl,
+    };
+    localStorage.setItem(openBannerKey, JSON.stringify(openBanner));
   };
 
   return (
