@@ -5,25 +5,40 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Toast } from "flowbite-react";
 import { HiFire } from "react-icons/hi";
-import { isNotKorean } from "@/utils/regex";
+import { isKorean } from "@/utils/regex";
 
 const errMsg = ["영어로 입력해주세요", "이 칸을 비우지 마세요"];
 
-// TODO 비밀번호 유효성
 export default function Signin() {
+  // 이름
   const [name, setName] = useState("");
+
+  // 이메일
+  const [email, setEmail] = useState("");
+
+  // 비밀번호
   const [pw, setPw] = useState("");
   const [checkPw, setCheckPw] = useState("");
   const [inputPw, setInputPw] = useState("비밀번호를 입력해주세요.");
 
+  // 이름 핸들러
   const inputName = (e) => {
-    if (e.nativeEvent.data && isNotKorean(e.nativeEvent.data)) {
+    if (e.nativeEvent.data && isKorean(e.nativeEvent.data)) {
       e.preventDefault();
       return;
     }
-    console.log(e.nativeEvent.data);
-    if (e.target.value === "") setName(errMsg[1]);
-    else setName("");
+
+    setName(e.target.value);
+  };
+
+  // 이메일 핸들러
+  const inputEmail = (e) => {
+    if (e.nativeEvent.data && isKorean(e.nativeEvent.data)) {
+      e.preventDefault();
+      return;
+    }
+
+    setEmail(e.target.value);
   };
 
   // 비밀번호 일치 여부
@@ -40,6 +55,7 @@ export default function Signin() {
         지금 가입하면 다양한 헤택이!
       </h2>
 
+      {/* 안내문 */}
       <div className="flex justify-around gap-4 mx-20 font-pixel">
         <Toast>
           <HiFire className="h-5 w-5 text-cyan-300 dark:text-cyan-500" />
@@ -55,6 +71,7 @@ export default function Signin() {
         </Toast>
       </div>
 
+      {/* Input Section */}
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
         <div className="mb-2 flex items-center ">
           <svg
@@ -72,14 +89,14 @@ export default function Signin() {
           </svg>
           <Label htmlFor="username" value="닉네임" />
         </div>
-        <TextInput
+        <input
           id="username"
           placeholder="pokemon"
-          addon="@"
           required
+          value={name}
           onChange={inputName}
+          className="border-[1px] border-gray-600 px-4 py-2 rounded-md w-full"
         />
-        <Label value={name} className="text-red-500" />
       </div>
 
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
@@ -96,12 +113,26 @@ export default function Signin() {
           </svg>
           <Label htmlFor="email" value="이메일" />
         </div>
-        <TextInput
+        <input
           id="email"
           type="email"
-          placeholder="email@xxxxx.com"
+          placeholder="email"
           required
-          color="blue"
+          value={email}
+          onChange={inputEmail}
+          className="border-[1px] border-gray-600 px-4 py-2 rounded-md w-1/2"
+        />
+        <span> @ </span>
+        <select className="rounded-md">
+          <option>naver.com</option>
+          <option>gmail.com</option>
+          <option>daum.net</option>
+          <option>직접 입력</option>
+        </select>
+
+        <input
+          placeholder="domain"
+          className="border-[1px] border-gray-600 px-4 py-2 rounded-md w-1/2 mt-2"
         />
       </div>
 
