@@ -6,20 +6,32 @@ import { useEffect, useState } from "react";
 import { Toast } from "flowbite-react";
 import { HiFire } from "react-icons/hi";
 import { isKorean } from "@/utils/regex";
+import { useRouter } from "next/navigation";
 
-const errMsg = ["영어로 입력해주세요", "이 칸을 비우지 마세요"];
+const domainOption = [
+  { name: "gmail.com", value: "gmail.com" },
+  { name: "naver.com", value: "naver.com" },
+  { name: "daum.net", value: "daum.net" },
+  { name: "custom", value: "직접 입력" },
+];
 
 export default function Signin() {
+  const router = useRouter();
+
   // 이름
   const [name, setName] = useState("");
 
   // 이메일
   const [email, setEmail] = useState("");
+  const [domain, setDomain] = useState(false);
 
   // 비밀번호
   const [pw, setPw] = useState("");
   const [checkPw, setCheckPw] = useState("");
   const [inputPw, setInputPw] = useState("비밀번호를 입력해주세요.");
+
+  // 수신 혜택 여부
+  const [agree, setAgree] = useState(false);
 
   // 이름 핸들러
   const inputName = (e) => {
@@ -48,6 +60,45 @@ export default function Signin() {
     if (pw !== checkPw) setInputPw("비밀번호가 같지 않습니다.");
     else setInputPw("비밀번호가 같습니다.");
   }, [pw, checkPw]);
+
+  const handleOpt = (e) => {
+    console.log(e.target);
+    if (e.target.value === "직접 입력") {
+      setDomain(true);
+    }
+  };
+
+  // 회원가입 처리
+  const handleSignup = async () => {
+    const emailAddDomain = email + "@" + domain;
+
+    const response = await fetch(
+      `${process.env.NEXT_PUBLICK_BACK_URL}/user/signup`,
+      {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_info: {
+            email: emailAddDomain,
+            pw: pw,
+            name: name,
+            agree: agree,
+          },
+        }),
+      }
+    );
+
+    const result = await response.json();
+    if (result.success) {
+      alert(`${result.payload.message}`);
+      router.replace("/login");
+    } else {
+      alert(`로그인 실패 - ${result.payload.message}`);
+    }
+  };
 
   return (
     <form className="flex flex-col gap-6 my-5">
@@ -122,18 +173,19 @@ export default function Signin() {
           onChange={inputEmail}
           className="border-[1px] border-gray-600 px-4 py-2 rounded-md w-1/2"
         />
-        <span> @ </span>
-        <select className="rounded-md">
-          <option>naver.com</option>
-          <option>gmail.com</option>
-          <option>daum.net</option>
-          <option>직접 입력</option>
+        <span className="px-2"> @ </span>
+        <select className="rounded-md" onChange={handleOpt}>
+          {domainOption.map((opt) => (
+            <option name={opt.name}>{opt.value}</option>
+          ))}
         </select>
 
-        <input
-          placeholder="domain"
-          className="border-[1px] border-gray-600 px-4 py-2 rounded-md w-1/2 mt-2"
-        />
+        {domain && (
+          <input
+            placeholder="domain"
+            className="border-[1px] border-gray-600 px-4 py-2 rounded-md w-full mt-2"
+          />
+        )}
       </div>
 
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
@@ -153,13 +205,13 @@ export default function Signin() {
           </svg>
           <Label htmlFor="password" value="비밀번호" />
         </div>
-        <TextInput
+        <input
           id="password1"
           type="password"
           required
-          shadow
-          color="blue"
+          value={pw}
           onChange={(e) => setPw(e.target.value)}
+          className="border-[1px] border-gray-600 px-4 py-2 rounded-md w-full"
         />
       </div>
 
@@ -185,18 +237,23 @@ export default function Signin() {
           </svg>
           <Label htmlFor="repeat-password" value="비밀번호 확인" />
         </div>
-        <TextInput
+        <input
           id="repeat-password"
           type="password"
           required
-          shadow
-          color="blue"
+          value={checkPw}
           onChange={(e) => setCheckPw(e.target.value)}
+          className="border-[1px] border-gray-600 px-4 py-2 rounded-md w-full"
         />
         <Label value={inputPw} className="text-red-500 mb-2" />
 
-        <div className="flex items-center gap-2 mt-1">
-          <Checkbox id="agree" color="blue" />
+        <div className="flex items-center gap-2 mt-2">
+          <Checkbox
+            id="agree"
+            color="blue"
+            value={agree}
+            onChange={() => setAgree(!agree)}
+          />
           <Label htmlFor="agree" className="flex">
             헤택을 담은&nbsp;
             <Link
@@ -211,7 +268,12 @@ export default function Signin() {
       </div>
 
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
-        <Button type="submit" className="w-full" color="blue">
+        <Button
+          type="submit"
+          className="w-full"
+          color="blue"
+          onClick={handleSignup}
+        >
           가입을 완료합니다
         </Button>
       </div>
