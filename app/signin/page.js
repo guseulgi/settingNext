@@ -1,6 +1,6 @@
 "use client";
 
-import { Label, TextInput, Checkbox, Button } from "flowbite-react";
+import { Label, Checkbox, Button } from "flowbite-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Toast } from "flowbite-react";
@@ -19,19 +19,19 @@ export default function Signin() {
   const router = useRouter();
 
   // 이름
-  const [name, setName] = useState("");
+  const [nickname, setNickName] = useState("");
 
   // 이메일
   const [email, setEmail] = useState("");
   const [domain, setDomain] = useState(false);
 
   // 비밀번호
-  const [pw, setPw] = useState("");
+  const [password, setPassword] = useState("");
   const [checkPw, setCheckPw] = useState("");
   const [inputPw, setInputPw] = useState("비밀번호를 입력해주세요.");
 
   // 수신 혜택 여부
-  const [agree, setAgree] = useState(false);
+  const [isEmail, setIsEmail] = useState(false);
 
   // 이름 핸들러
   const inputName = (e) => {
@@ -40,7 +40,7 @@ export default function Signin() {
       return;
     }
 
-    setName(e.target.value);
+    setNickName(e.target.value);
   };
 
   // 이메일 핸들러
@@ -55,11 +55,11 @@ export default function Signin() {
 
   // 비밀번호 일치 여부
   useEffect(() => {
-    if (pw === "" || checkPw === "") return;
+    if (password === "" || checkPw === "") return;
 
-    if (pw !== checkPw) setInputPw("비밀번호가 같지 않습니다.");
+    if (password !== checkPw) setInputPw("비밀번호가 같지 않습니다.");
     else setInputPw("비밀번호가 같습니다.");
-  }, [pw, checkPw]);
+  }, [password, checkPw]);
 
   const handleOpt = (e) => {
     console.log(e.target);
@@ -73,7 +73,7 @@ export default function Signin() {
     const emailAddDomain = email + "@" + domain;
 
     const response = await fetch(
-      `${process.env.NEXT_PUBLICK_BACK_URL}/user/signup`,
+      `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/signup`,
       {
         method: "POST",
         credentials: "include",
@@ -83,13 +83,15 @@ export default function Signin() {
         body: JSON.stringify({
           user_info: {
             email: emailAddDomain,
-            pw: pw,
-            name: name,
-            agree: agree,
+            password: password,
+            nickname: nickname,
+            is_email: isEmail,
           },
         }),
       }
     );
+
+    console.log("?E?FS?FD?FS", "ddd");
 
     const result = await response.json();
     if (result.success) {
@@ -101,7 +103,7 @@ export default function Signin() {
   };
 
   return (
-    <form className="flex flex-col gap-6 my-5">
+    <div className="flex flex-col gap-6 my-5">
       <h2 className="mx-auto text-2xl mt-6 mb-3 font-pixel">
         지금 가입하면 다양한 헤택이!
       </h2>
@@ -144,7 +146,7 @@ export default function Signin() {
           id="username"
           placeholder="pokemon"
           required
-          value={name}
+          value={nickname}
           onChange={inputName}
           className="border-[1px] border-gray-600 px-4 py-2 rounded-md w-full"
         />
@@ -166,7 +168,7 @@ export default function Signin() {
         </div>
         <input
           id="email"
-          type="email"
+          type="text"
           placeholder="email"
           required
           value={email}
@@ -209,8 +211,8 @@ export default function Signin() {
           id="password1"
           type="password"
           required
-          value={pw}
-          onChange={(e) => setPw(e.target.value)}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           className="border-[1px] border-gray-600 px-4 py-2 rounded-md w-full"
         />
       </div>
@@ -251,8 +253,8 @@ export default function Signin() {
           <Checkbox
             id="agree"
             color="blue"
-            value={agree}
-            onChange={() => setAgree(!agree)}
+            value={isEmail}
+            onChange={() => setIsEmail(!agree)}
           />
           <Label htmlFor="agree" className="flex">
             헤택을 담은&nbsp;
@@ -268,15 +270,10 @@ export default function Signin() {
       </div>
 
       <div className="w-1/2 md:w-1/3 items-center mx-auto">
-        <Button
-          type="submit"
-          className="w-full"
-          color="blue"
-          onClick={handleSignup}
-        >
+        <button className="w-full" onClick={handleSignup}>
           가입을 완료합니다
-        </Button>
+        </button>
       </div>
-    </form>
+    </div>
   );
 }
