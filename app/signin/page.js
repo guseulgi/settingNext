@@ -23,7 +23,9 @@ export default function Signin() {
 
   // 이메일
   const [email, setEmail] = useState("");
-  const [domain, setDomain] = useState(false);
+  const [isDomain, setIsDomain] = useState(false);
+  const [domain, setDomain] = useState("");
+  const [customDomain, setCustomDomain] = useState("");
 
   // 비밀번호
   const [password, setPassword] = useState("");
@@ -51,6 +53,7 @@ export default function Signin() {
     }
 
     setEmail(e.target.value);
+    setDomain(domainOption[0].name);
   };
 
   // 비밀번호 일치 여부
@@ -61,16 +64,20 @@ export default function Signin() {
     else setInputPw("비밀번호가 같습니다.");
   }, [password, checkPw]);
 
+  // 이메일 도메인 설정
   const handleOpt = (e) => {
-    console.log(e.target);
-    if (e.target.value === "직접 입력") {
-      setDomain(true);
+    setDomain(e.target.value);
+    setIsDomain(false);
+    if (e.target.value === "custom") {
+      setIsDomain(true);
+      setDomain(customDomain);
     }
   };
 
   // 회원가입 처리
   const handleSignup = async () => {
     const emailAddDomain = email + "@" + domain;
+    const ie = isEmail ? "T" : "F";
 
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/signup`,
@@ -85,7 +92,7 @@ export default function Signin() {
             email: emailAddDomain,
             password: password,
             nickname: nickname,
-            is_email: isEmail,
+            is_email: ie,
           },
         }),
       }
@@ -95,7 +102,7 @@ export default function Signin() {
 
     const result = await response.json();
     if (result.success) {
-      alert(`${result.payload.message}`);
+      alert(`로그인 성공!`);
       router.replace("/login");
     } else {
       alert(`로그인 실패 - ${result.payload.message}`);
@@ -178,13 +185,16 @@ export default function Signin() {
         <span className="px-2"> @ </span>
         <select className="rounded-md" onChange={handleOpt}>
           {domainOption.map((opt) => (
-            <option name={opt.name}>{opt.value}</option>
+            <option name={opt.name} value={opt.name}>
+              {opt.value}
+            </option>
           ))}
         </select>
 
-        {domain && (
+        {isDomain && (
           <input
             placeholder="domain"
+            onChange={(e) => setCustomDomain(e.target.value)}
             className="border-[1px] border-gray-600 px-4 py-2 rounded-md w-full mt-2"
           />
         )}
