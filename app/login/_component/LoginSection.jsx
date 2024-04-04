@@ -1,9 +1,12 @@
 "use client";
 
 import { Button, Checkbox, Label } from "flowbite-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Login() {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,8 +24,10 @@ export default function Login() {
       `${process.env.NEXT_PUBLIC_BACK_URL}/api/user/signin`,
       {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify({
           user_info: {
@@ -34,8 +39,10 @@ export default function Login() {
     );
 
     const result = await response.json();
+    console.log(result.payload.message, "2#!");
     if (result.success) {
       alert("로그인 성공");
+      router.push("/mypage");
     } else {
       // 실패 시
       alert("로그인 정보가 일치하지 않습니다");

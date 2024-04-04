@@ -80,7 +80,7 @@ export default function SigninSection() {
     const ie = isEmail ? "T" : "F";
 
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/signup`,
+      `${process.env.NEXT_PUBLIC_BACK_URL}/api/user/signup`,
       {
         method: "POST",
         credentials: "include",
@@ -100,10 +100,10 @@ export default function SigninSection() {
 
     const result = await response.json();
     if (result.success) {
-      alert(`로그인 성공!`);
+      alert(`회원가입 성공!`);
       router.replace("/login");
     } else {
-      alert(`로그인 실패 - ${result.payload.message}`);
+      alert(`회원가입 실패 - ${result.payload.message}`);
     }
   };
 
