@@ -19,7 +19,6 @@ export default function Login() {
   };
 
   const handleLogin = async (e) => {
-    console.log("dddddd", email, password);
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BACK_URL}/api/user/signin`,
       {
@@ -39,13 +38,13 @@ export default function Login() {
     );
 
     const result = await response.json();
-    console.log(result.payload.message, "2#!");
+
     if (result.success) {
       alert("로그인 성공");
       router.push("/mypage");
     } else {
       // 실패 시
-      alert("로그인 정보가 일치하지 않습니다");
+      alert(result.payload.message);
     }
   };
 
