@@ -80,7 +80,7 @@ export default function SigninSection() {
     const ie = isEmail ? "T" : "F";
 
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACK_URL}/api/user/signup`,
+      `${process.env.NEXT_PUBLIC_BACK_URL}/api/users`,
       {
         method: "POST",
         credentials: "include",

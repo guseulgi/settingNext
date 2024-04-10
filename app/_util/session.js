@@ -2,12 +2,12 @@ import { cookies } from "next/headers";
 
 export async function fetchSession() {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BACK_URL}/api/user/session`,
+    `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/session`,
     {
-      method: "GET",
+      method: "POST",
       credentials: "include",
       headers: {
-        Cookie: cookies().get("user_id"),
+        Cookie: cookies().get("userId"),
       },
     }
   );

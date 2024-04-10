@@ -20,7 +20,7 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACK_URL}/api/user/signin`,
+      `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/auth`,
       {
         method: "POST",
         credentials: "include",

@@ -18,8 +18,24 @@ export default function SidebarSection() {
       const anw = confirm("로그아웃 하시겠습니까?");
       if (anw) {
         // 로그아웃 처리
+        handleLogout();
       } else {
       }
+    }
+  };
+
+  const handleLogout = async () => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/auth`,
+      {
+        method: "GET",
+        credentials: "include",
+      }
+    );
+
+    const result = await response.json();
+    if (result.success) {
+      alert("로그아웃 성공");
     }
   };
 
