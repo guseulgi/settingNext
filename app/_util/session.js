@@ -7,7 +7,7 @@ export async function fetchSession() {
       method: "POST",
       credentials: "include",
       headers: {
-        Cookie: cookies().get("userId"),
+        Cookie: cookies().toString(),
       },
     }
   );
