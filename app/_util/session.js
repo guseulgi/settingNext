@@ -4,8 +4,9 @@ export async function fetchSession() {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/session`,
     {
-      method: "POST",
+      method: "GET",
       credentials: "include",
+      cache: "no-store",
       headers: {
         Cookie: cookies().toString(),
       },

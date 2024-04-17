@@ -18,7 +18,7 @@ export default function Login() {
     setPassword(e.target.value);
   };
 
-  const handleLogin = async (e) => {
+  const handleLogin = async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/auth`,
       {
@@ -26,7 +26,6 @@ export default function Login() {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify({
           user_info: {

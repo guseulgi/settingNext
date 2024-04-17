@@ -5,7 +5,7 @@ import { fetchSession } from "@/app/_util/session";
 export default function MyPage() {
   const session = fetchSession();
 
-  // console.log("session", session);
+  console.log("session", session);
 
   return (
     <div className="flex-1 m-auto h-full">
