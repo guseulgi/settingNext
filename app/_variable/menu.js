@@ -33,6 +33,10 @@ export const menu = [
 
 export const myPageMenu = [
   {
+    title: "관리자 페이지",
+    link: "/admin/setting",
+  },
+  {
     title: "좋아요",
     link: "/mypage/likelist",
     svgcnt: 1,
@@ -40,4 +44,19 @@ export const myPageMenu = [
   { title: "개인정보수정", link: "/mypage/profile" },
   { title: "도움말", link: "/help" },
   { title: "로그아웃", link: "/" },
+];
+
+export const adminMenu = [
+  {
+    title: "사용자 목록",
+    link: "/admin/user",
+  },
+  {
+    title: "상품 목록",
+    link: "/admin/product",
+  },
+  {
+    title: "관리자 설정",
+    link: "/admin/setting",
+  },
 ];

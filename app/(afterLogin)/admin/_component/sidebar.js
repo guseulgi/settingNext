@@ -1,7 +1,6 @@
 "use client";
 
-import { Badge, Sidebar } from "flowbite-react";
-import { myPageMenu } from "../../../_variable/menu";
+import { adminMenu } from "../../../_variable/menu";
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -13,45 +12,16 @@ export default function SidebarSection() {
 
   const clickSidebar = (idx) => {
     setMypageTab(idx);
-
-    if (idx === myPageMenu.length - 1) {
-      const anw = confirm("로그아웃 하시겠습니까?");
-      if (anw) {
-        // 로그아웃 처리
-        handleLogout();
-      } else {
-      }
-    }
-  };
-
-  const handleLogout = async () => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/logout`,
-      {
-        method: "POST",
-        credentials: "include",
-      }
-    );
-
-    const result = await response.json();
-    if (result.success) {
-      alert("로그아웃 성공");
-    }
   };
 
   return (
-    <div className="w-[25%] mb-5 bg-gray-50 md:flex-none md:border-[3px] md:border-slate-700 rounded-md">
+    <div className="w-[25%] bg-gray-50 md:flex-none md:border-[3px] md:border-slate-700 rounded-md">
       <div className="bg-gray-200 mt-3 mx-3 px-4 py-2 hidden md:block border-[1px] border-slate-700 rounded-md ">
-        <div className="mb-2 flex items-center">
-          <Badge color="warning">오박사</Badge>
-        </div>
-        <div className="mb-1 text-sm text-cyan-900 dark:text-gray-400">
-          포켓몬스터의 세계에 잘 왔단다!
-        </div>
+        <div className="flex items-center">XXX 님 어서오세요</div>
       </div>
 
       <div className="flex justify-between md:block items-center py-2 px-6 rounded-sm ">
-        {myPageMenu.map((item, idx) => {
+        {adminMenu.map((item, idx) => {
           return (
             <Link
               href={item.link}
