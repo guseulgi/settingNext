@@ -6,13 +6,25 @@ import { useState } from "react";
 import MobileNavbar from "./mobileNavbar";
 import Link from "next/link";
 import { Tooltip } from "flowbite-react";
+import { fetchLogout } from "../_util/login";
 
 const loginButtonStlye =
   "cursor-pointer mt-1 hover:-translate-y-1 hover:scale-110 scale-100 duration-100";
 const loginButtonSize = { w: 30, h: 30 };
 
-export default function Logobar() {
+export default function Logobar({ session }) {
   const [isBlock, setIsBlock] = useState(false);
+
+  const handleLogout = (e) => {
+    const result = fetchLogout();
+    console.log(session, "?");
+
+    if (result.success) {
+      alert("로그아웃 성공!");
+    } else {
+      alert("로그아웃에 문제가 발생하였습니다.");
+    }
+  };
 
   return (
     <>
@@ -57,21 +69,37 @@ export default function Logobar() {
         </div>
 
         <div className="flex gap-2">
-          <Tooltip
-            content="로그인"
-            placement="bottom"
-            style="light"
-            arrow={false}
-            className="m-auto"
-          >
-            <Button
-              // title="Login"
-              path="/ball3.webp"
-              size={loginButtonSize}
-              imgStyle={loginButtonStlye}
-              href="/login"
-            />
-          </Tooltip>
+          {session.success === true ? (
+            <Tooltip
+              content="로그아웃"
+              placement="bottom"
+              style="light"
+              arrow={false}
+              className="m-auto"
+            >
+              <Button
+                path="/ball3.webp"
+                size={loginButtonSize}
+                imgStyle={loginButtonStlye}
+                onClick={handleLogout}
+              />
+            </Tooltip>
+          ) : (
+            <Tooltip
+              content="로그인"
+              placement="bottom"
+              style="light"
+              arrow={false}
+              className="m-auto"
+            >
+              <Button
+                path="/ball3.webp"
+                size={loginButtonSize}
+                imgStyle={loginButtonStlye}
+                href="/login"
+              />
+            </Tooltip>
+          )}
 
           <Tooltip
             content="좋아요"

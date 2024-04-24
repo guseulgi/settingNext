@@ -5,6 +5,7 @@ import Logobar from "./_component/logobar";
 import Footer from "./_component/footer";
 import BannerProvider from "./_component/bannerProvider";
 import PopBanner from "./_component/banner";
+import { fetchSession } from "./_util/session";
 
 const inter = Noto_Sans_KR({ subsets: ["latin"] });
 
@@ -13,12 +14,14 @@ export const metadata = {
   description: "Pokemon Moncolle Testing Site!",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await fetchSession();
+
   return (
     <html lang="ko">
       <body className={inter.className}>
         <div id="outterContainer">
-          <Logobar />
+          <Logobar session={session} />
           <Navbar />
           <BannerProvider>
             <PopBanner />

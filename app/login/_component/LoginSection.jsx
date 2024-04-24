@@ -1,5 +1,6 @@
 "use client";
 
+import { fetchLogin } from "@/app/_util/login";
 import { Button, Checkbox, Label } from "flowbite-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -19,24 +20,7 @@ export default function Login() {
   };
 
   const handleLogin = async () => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/login`,
-      {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_info: {
-            email: email,
-            password: password,
-          },
-        }),
-      }
-    );
-
-    const result = await response.json();
+    const result = await fetchLogin();
 
     if (result.success) {
       alert("로그인 성공");

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Button({ title, path, size, imgStyle, href }) {
+export default function Button({ title, path, size, imgStyle, href = "/" }) {
   return (
     <Link className="flex" href={href}>
       {title && <span className="leading-10 text-xs mr-1">{title}</span>}
