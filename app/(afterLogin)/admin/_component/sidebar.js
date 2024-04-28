@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export default function SidebarSection() {
+export default function SidebarSection({ session }) {
   const [mypageTab, setMypageTab] = useState(-1);
   const router = useRouter();
 
@@ -17,7 +17,9 @@ export default function SidebarSection() {
   return (
     <div className="w-[25%] bg-gray-50 md:flex-none md:border-[3px] md:border-slate-700 rounded-md">
       <div className="bg-gray-200 mt-3 mx-3 px-4 py-2 hidden md:block border-[1px] border-slate-700 rounded-md ">
-        <div className="flex items-center">XXX 님 어서오세요</div>
+        <div className="flex items-center">
+          {session.payload.nickname} 님 어서오세요
+        </div>
       </div>
 
       <div className="flex justify-between md:block items-center py-2 px-6 rounded-sm ">

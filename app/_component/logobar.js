@@ -17,8 +17,6 @@ export default function Logobar({ session }) {
 
   const handleLogout = async (e) => {
     const result = await fetchLogout();
-    console.log(session, "?");
-    console.log(result, "?");
 
     if (result.success) {
       alert("로그아웃 성공!");
@@ -70,6 +68,13 @@ export default function Logobar({ session }) {
         </div>
 
         <div className="flex gap-2">
+          {session.success === true ? (
+            <span className="my-auto text-xs">
+              {session.payload.nickname} 님 환영합니다!
+            </span>
+          ) : (
+            <></>
+          )}
           {session.success === true ? (
             <Tooltip
               content="로그아웃"

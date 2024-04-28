@@ -3,7 +3,7 @@
 import { FloatingLabel } from "flowbite-react";
 import Image from "next/image";
 
-export default function CardSection({ name, detail }) {
+export default function CardSection({ session }) {
   const changeInfo = () => {
     const anw = confirm("내 정보를 수정하시겠습니까?");
     if (anw) {
@@ -45,14 +45,14 @@ export default function CardSection({ name, detail }) {
               </div>
 
               <h5 className="my-1 text-xl mb-4 font-medium text-gray-900 dark:text-white">
-                {name}
+                {session.payload.nickname}
               </h5>
               <span className="text-sm text-gray-500 dark:text-gray-400 mb-2 w-2/3">
                 <FloatingLabel
                   variant="standard"
                   label="당신의 설명을 적어주세요"
                   sizing="sm"
-                  value={detail}
+                  value={"임시..."}
                 />
               </span>
 
