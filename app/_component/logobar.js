@@ -15,9 +15,10 @@ const loginButtonSize = { w: 30, h: 30 };
 export default function Logobar({ session }) {
   const [isBlock, setIsBlock] = useState(false);
 
-  const handleLogout = (e) => {
-    const result = fetchLogout();
+  const handleLogout = async (e) => {
+    const result = await fetchLogout();
     console.log(session, "?");
+    console.log(result, "?");
 
     if (result.success) {
       alert("로그아웃 성공!");

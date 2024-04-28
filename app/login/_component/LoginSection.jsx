@@ -20,7 +20,7 @@ export default function Login() {
   };
 
   const handleLogin = async () => {
-    const result = await fetchLogin();
+    const result = await fetchLogin(email, password);
 
     if (result.success) {
       alert("로그인 성공");

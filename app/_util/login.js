@@ -1,4 +1,4 @@
-export async function fetchLogin() {
+export async function fetchLogin(email, password) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/login`,
     {
@@ -27,6 +27,7 @@ export async function fetchLogout() {
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
+        Cookie: cookies().toString(),
       },
     }
   );

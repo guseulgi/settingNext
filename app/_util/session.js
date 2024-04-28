@@ -14,6 +14,6 @@ export async function fetchSession() {
   );
 
   const result = await response.json();
-  console.log(result);
+
   return result;
 }
