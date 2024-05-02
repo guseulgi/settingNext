@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export default function SidebarSection() {
+export default function SidebarSection({ session }) {
   const [mypageTab, setMypageTab] = useState(-1);
   const router = useRouter();
 
