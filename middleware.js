@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
-import { fetchSession } from "./_util/session";
+import { fetchSession } from "./app/_util/session";
 
 export async function middleware(request) {
-  const result = fetchSession();
+  const result = await fetchSession();
 
-  console.log("result", result);
+  console.log("result!!!!", result);
 
   if (request.nextUrl.pathname.startsWith("/mypage")) {
     if (!result.success) {
@@ -15,5 +15,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: "/mypage",
+  matcher: ["/mypage/:path*"],
 };
