@@ -1,15 +1,16 @@
 "use client";
 
 import { fetchLogin } from "@/app/_util/login";
-import { Button, Checkbox, Label } from "flowbite-react";
+import { Button, ToggleSwitch, Label } from "flowbite-react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Login() {
   const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isEmail, setIsEmail] = useState(false);
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -19,11 +20,21 @@ export default function Login() {
     setPassword(e.target.value);
   };
 
+  useEffect(() => {
+    if (localStorage.getItem("USEREMAIL")) {
+      setEmail(localStorage.getItem("USEREMAIL"));
+    }
+  }, []);
+
   const handleLogin = async () => {
     const result = await fetchLogin(email, password);
 
     if (result.success) {
       alert("로그인 성공");
+      if (isEmail === true) {
+        localStorage.setItem("USEREMAIL", email);
+      }
+
       router.push("/mypage");
     } else {
       // 실패 시
@@ -87,7 +98,12 @@ export default function Login() {
         </div>
 
         <div className="flex items-center gap-2 mb-2">
-          <Checkbox id="remember" color="blue" />
+          <ToggleSwitch
+            id="remember"
+            color="blue"
+            checked={isEmail}
+            onChange={setIsEmail}
+          />
           <Label htmlFor="remember">로그인 정보 기억하기</Label>
         </div>
         <Button type="submit" color="blue" onClick={handleLogin}>
