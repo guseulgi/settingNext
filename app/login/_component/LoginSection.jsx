@@ -22,9 +22,18 @@ export default function Login() {
 
   useEffect(() => {
     if (localStorage.getItem("USEREMAIL")) {
+      setIsEmail(true);
       setEmail(localStorage.getItem("USEREMAIL"));
     }
   }, []);
+
+  useEffect(() => {
+    if (isEmail == false) {
+      localStorage.removeItem("USEREMAIL");
+    } else {
+      localStorage.setItem("USEREMAIL", email);
+    }
+  }, [isEmail]);
 
   const handleLogin = async () => {
     const result = await fetchLogin(email, password);

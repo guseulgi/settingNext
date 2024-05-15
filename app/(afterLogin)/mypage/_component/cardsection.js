@@ -2,12 +2,45 @@
 
 import { FloatingLabel } from "flowbite-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function CardSection({ session }) {
-  const changeInfo = () => {
+  const [description, setDescription] = useState("");
+  const [prfimg, setPrfimg] = useState("");
+
+  useEffect(() => {
+    if (session.payload.description != "") {
+      setDescription(session.payload.description);
+    }
+
+    if (session.payload.prfimg === null) {
+      setPrfimg("/red.webp");
+    } else {
+      setPrfimg(session.payload.prfimg);
+    }
+  }, []);
+
+  const changeInfo = async () => {
     const anw = confirm("내 정보를 수정하시겠습니까?");
     if (anw) {
       // 정보 수정
+      emailSplit = session.payload.email.split("@");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/${emailSplit[0]}`,
+        {
+          method: "PUT",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_info: {
+              description: description,
+              prfimg: prfimg,
+            },
+          }),
+        }
+      );
     } else {
     }
   };
@@ -25,7 +58,7 @@ export default function CardSection({ session }) {
                 <Image
                   alt="profile"
                   height="96"
-                  src="/red.webp"
+                  src={prfimg}
                   width="96"
                   className="rounded-full size-20 object-scale-down"
                 />
@@ -50,9 +83,9 @@ export default function CardSection({ session }) {
               <span className="text-sm text-gray-500 dark:text-gray-400 mb-2 w-2/3">
                 <FloatingLabel
                   variant="standard"
-                  label="당신의 설명을 적어주세요"
+                  label="나의 소개"
                   sizing="sm"
-                  value={"임시..."}
+                  value={description}
                 />
               </span>
 
@@ -75,7 +108,7 @@ export default function CardSection({ session }) {
                       />
                     </svg>
                   </div>
-                  <p className=" leading-5 ">9999</p>
+                  <p className=" leading-5 ">{session.payload.point}</p>
                 </div>
                 <button
                   onClick={() => changeInfo()}
