@@ -20,6 +20,20 @@ export default function CardSection({ session }) {
     }
   }, []);
 
+  const handleprf = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    read.onLoad = (e) => {
+      if (reader.readyState === 2) {
+        // 파일 onLoad가 성공하면 2, 진행 중은 1, 실패는 0 반환
+        setImage(e.target.result);
+      }
+    };
+  };
+
   const changeInfo = async () => {
     const anw = confirm("내 정보를 수정하시겠습니까?");
     if (anw) {
