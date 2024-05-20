@@ -2,11 +2,12 @@
 
 import { FloatingLabel } from "flowbite-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CardSection({ session }) {
   const [description, setDescription] = useState("");
   const [prfimg, setPrfimg] = useState("");
+  const fileInput = useRef(null);
 
   useEffect(() => {
     if (session.payload.description != "") {
@@ -21,24 +22,29 @@ export default function CardSection({ session }) {
   }, []);
 
   const handleprf = async (e) => {
+    const reader = new FileReader();
     const file = e.target.files[0];
     if (!file) return;
 
-    const reader = new FileReader();
     reader.readAsDataURL(file);
-    read.onLoad = (e) => {
-      if (reader.readyState === 2) {
-        // 파일 onLoad가 성공하면 2, 진행 중은 1, 실패는 0 반환
-        setImage(e.target.result);
+    reader.onloadend = (e) => {
+      if (reader.readyState == 2) {
+        // 일단 base64 형태로 이미지 저장
+        // 파일 onloadend 성공하면 2, 진행 중은 1, 실패는 0 반환
+        setPrfimg(e.target.result);
       }
     };
+  };
+
+  const handleDescription = (e) => {
+    setDescription(e.target.value);
   };
 
   const changeInfo = async () => {
     const anw = confirm("내 정보를 수정하시겠습니까?");
     if (anw) {
       // 정보 수정
-      emailSplit = session.payload.email.split("@");
+      const emailSplit = session.payload.email.split("@");
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/${emailSplit[0]}`,
         {
@@ -49,12 +55,19 @@ export default function CardSection({ session }) {
           },
           body: JSON.stringify({
             user_info: {
+              email: session.payload.email,
               description: description,
               prfimg: prfimg,
             },
           }),
         }
       );
+
+      const result = await response.json();
+      if (result.success) {
+        alert("수정이 완료되었습니다.");
+      } else {
+      }
     } else {
     }
   };
@@ -88,6 +101,8 @@ export default function CardSection({ session }) {
                   id="file"
                   className="hidden"
                   accept=".jpeg, .jpg, .png"
+                  ref={fileInput}
+                  onChange={handleprf}
                 />
               </div>
 
@@ -99,6 +114,7 @@ export default function CardSection({ session }) {
                   variant="standard"
                   label="나의 소개"
                   sizing="sm"
+                  onChange={handleDescription}
                   value={description}
                 />
               </span>
