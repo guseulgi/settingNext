@@ -1,10 +1,12 @@
+import { fetchSession } from "@/app/_util/session";
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 
-export default function Profile() {
+export default async function Profile() {
+  const session = await fetchSession();
   return (
     <>
       <form className="flex flex-col flex-1 items-center gap-3 ">
-        <label className="text-xl">개인정보변경</label>
+        <label className="text-xl">비밀번호변경</label>
         <div className="block w-1/2">
           <div className="mb-2">
             <Label htmlFor="nickname" value="닉네임" />
@@ -15,7 +17,7 @@ export default function Profile() {
             required
             addon="@"
             color="blue"
-            value="임시이름"
+            value={session.payload.nickname}
           />
         </div>
 
@@ -36,13 +38,17 @@ export default function Profile() {
           <TextInput
             id="email1"
             type="email"
-            value="email@xxxxx.com"
+            value={session.payload.email}
             required
             color="blue"
             disabled
           />
           <div className="flex items-center gap-2 mt-2">
-            <Checkbox id="remember" color="blue" />
+            {session.payload.is_email ? (
+              <Checkbox id="remember" color="blue" checked />
+            ) : (
+              <Checkbox id="remember" color="blue" />
+            )}
             <Label htmlFor="remember">이메일로 혜택을 받으시겠습니까?</Label>
           </div>
         </div>
@@ -62,7 +68,7 @@ export default function Profile() {
         </div>
 
         <Button type="submit" color="blue" className="w-1/2 mt-3">
-          다음으로
+          수정하기
           <svg
             class="w-5 h-6"
             aria-hidden="true"
