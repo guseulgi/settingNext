@@ -14,6 +14,22 @@ export async function fetchSession() {
   );
 
   const result = await response.json();
+  return result;
+}
 
+export async function fetchPrf(email) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BACK_URL}/api/users/${email}`,
+    {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: cookies().toString(),
+      },
+    }
+  );
+
+  const result = await response.json();
   return result;
 }

@@ -4,20 +4,18 @@ import { FloatingLabel } from "flowbite-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-export default function CardSection({ session }) {
+export default function CardSection({ session, prfInfo }) {
   const [description, setDescription] = useState("");
-  const [prfimg, setPrfimg] = useState("");
+  const [prfimg, setPrfimg] = useState("/red.webp");
   const fileInput = useRef(null);
 
   useEffect(() => {
     if (session.payload.description != "") {
       setDescription(session.payload.description);
     }
-
-    if (session.payload.prfimg === null) {
-      setPrfimg("/red.webp");
-    } else {
-      setPrfimg(session.payload.prfimg);
+    console.log(prfInfo);
+    if (prfInfo.payload.prfimg) {
+      setPrfimg(prfInfo.payload.prfimg);
     }
   }, []);
 

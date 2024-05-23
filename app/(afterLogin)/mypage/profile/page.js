@@ -45,7 +45,7 @@ export default async function Profile() {
           />
           <div className="flex items-center gap-2 mt-2">
             {session.payload.is_email ? (
-              <Checkbox id="remember" color="blue" checked />
+              <Checkbox id="remember" color="blue" defaultChecked />
             ) : (
               <Checkbox id="remember" color="blue" />
             )}
