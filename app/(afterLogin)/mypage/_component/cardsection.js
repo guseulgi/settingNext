@@ -13,11 +13,14 @@ export default function CardSection({ session, prfInfo }) {
     if (session.payload.description != "") {
       setDescription(session.payload.description);
     }
+  }, []);
+
+  useEffect(() => {
     console.log(prfInfo);
-    if (prfInfo.payload.prfimg) {
+    if (prfInfo.payload !== undefined) {
       setPrfimg(prfInfo.payload.prfimg);
     }
-  }, []);
+  }, [prfInfo]);
 
   const handleprf = async (e) => {
     const reader = new FileReader();

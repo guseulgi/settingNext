@@ -23,6 +23,7 @@ export async function fetchPrf(email) {
     {
       method: "GET",
       credentials: "include",
+      cache: "no-store",
       headers: {
         "Content-Type": "application/json",
         Cookie: cookies().toString(),
